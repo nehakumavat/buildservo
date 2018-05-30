@@ -77,6 +77,7 @@ class EmployeeController extends CI_Controller {
                     } else {
                         $this->session->set_flashdata('add_failed', 'Failed to add employee');
                         $data['designation']=$this->designation_model->get_designation();
+                        $data['title']='Add';
                         $this->load->view('includes/header');
                         $this->load->view('includes/sidebar');
                         $this->load->view('employee/form_data', $data);
@@ -84,12 +85,83 @@ class EmployeeController extends CI_Controller {
                     }
                 }else{
                     $data['designation']=$this->designation_model->get_designation();
+                    $data['title']='Add';
                     $this->load->view('includes/header');
                     $this->load->view('includes/sidebar');
                     $this->load->view('employee/form_data', $data);
                     $this->load->view('includes/footer');
                 }
             }else{
+                $data['designation']=$this->designation_model->get_designation();
+                $data['title']='Add';
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('employee/form_data', $data);
+                $this->load->view('includes/footer');
+            }
+            
+        }
+        
+    }
+    public function edit()
+    {
+        $get=$this->input->get();
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('LoginController/index', 'refresh');
+        } else {
+            if($this->input->post()){
+                $this->form_validation->set_rules('name', 'Full Name', 'trim|required');
+                $this->form_validation->set_rules('mobile_no', 'Mobile Number', 'trim|required|numeric|regex_match[/^[0-9]{10}$/]');
+                $this->form_validation->set_rules('designation_id','Designation', 'required');
+                $this->form_validation->set_rules('address', 'Address', 'trim|required');
+                $this->form_validation->set_rules('email_id', 'Email', 'trim|required');
+                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+                $post = $this->input->post();
+                if($this->form_validation->run() == TRUE){
+                    if (!empty($_FILES['profile_image']['name'])) {
+                        $config = array();
+                        $config['upload_path'] = 'assets/images/employee/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('profile_image');
+                        $upload_data = $this->upload->data();
+                        $profile_image= $upload_data['file_name'];   
+                    } else {
+                        $profile_image= !empty($post['profile_image_hidden'])?$post['profile_image_hidden']:'';   
+                    }
+                    $details=$post;
+                    if(isset($details['profile_image_hidden'])){
+                        unset($details['profile_image_hidden']);
+                    }
+                    $details['updated_at'] = date('Y-m-d H:i:s');
+                    $details['profile_image'] = $profile_image;
+                    $result = $this->employee_model->edit_employee($details);
+                    if($result) {
+                        $this->session->set_flashdata('add_success', 'Employee Updated Succesfully');
+                        return redirect('employee', 'refresh');
+                    } else {
+                        $this->session->set_flashdata('add_failed', 'Failed to update employee');
+                        $data['employee_detail']=$this->employee_model->get_employee_by_id($details['id']);
+                        $data['title']='Edit';
+                        $data['designation']=$this->designation_model->get_designation();
+                        $this->load->view('includes/header');
+                        $this->load->view('includes/sidebar');
+                        $this->load->view('employee/form_data', $data);
+                        $this->load->view('includes/footer');
+                    }
+                }else{
+                    $data['employee_detail']=$this->employee_model->get_employee_by_id($post['id']);
+                    $data['title']='Edit';
+                    $data['designation']=$this->designation_model->get_designation();
+                    $this->load->view('includes/header');
+                    $this->load->view('includes/sidebar');
+                    $this->load->view('employee/form_data', $data);
+                    $this->load->view('includes/footer');
+                }
+            }else{
+                $data['employee_detail']=$this->employee_model->get_employee_by_id($get['id']);
+                $data['title']='Edit';
                 $data['designation']=$this->designation_model->get_designation();
                 $this->load->view('includes/header');
                 $this->load->view('includes/sidebar');

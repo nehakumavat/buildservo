@@ -24,6 +24,12 @@
                         <a href="<?php echo base_url();?>dashboard"><h3><i class="fa fa-bars"></i> <span class="nav-label">Dashboard</span></h3></a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url();?>employee"><h3><i class="fa fa-users"></i> <span class="nav-label">Employee</span></h3></a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url();?>designation"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Designation</span></h3></a>
+                    </li>
+                    <li>
                         <a href="<?php echo base_url();?>barcodes"><h3><i class="fa fa-barcode"></i> <span class="nav-label">Barcodes</span></h3></a>
                     </li>
                     <li>
@@ -32,9 +38,7 @@
                     <li>
                         <a href="<?php echo base_url();?>customers"><h3><i class="fa fa-users"></i> <span class="nav-label">Customers</span></h3></a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url();?>customer-groups"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Customer Groups</span></h3></a>
-                    </li>
+                    
                     <li>
                         <a href="index.html"><h3><i class="fa fa-th-large"></i> <span class="nav-label">Inventory</span> <span class="fa arrow"></span></h3></a>
                         <ul class="nav nav-second-level">

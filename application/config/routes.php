@@ -60,6 +60,8 @@ $route['dashboard']="DashboardController/dashboard";
 /*Employee Routes*/
 $route['employee']="EmployeeController/index";
 $route['employee/add']="EmployeeController/add";
+$route['employee/edit']="EmployeeController/edit";
+$route['employee/delete']="EmployeeController/delete";
 
 /*Customer Routes*/
 
