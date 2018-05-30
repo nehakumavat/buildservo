@@ -9,6 +9,13 @@ class Employee_model extends CI_Model {
         $query=$this->db->get('tbl_employee');
         return $query->result_array();
     }
+    function add_employee($data) {
+        $this->db->trans_start();
+        $this->db->insert('tbl_employee', $data);
+        $this->db->trans_complete();
+        return true;
+    }
+    
     function add_customer_group($group_data) {
         $this->db->trans_start();
         $this->db->insert('tbl_customer_groups', $group_data);

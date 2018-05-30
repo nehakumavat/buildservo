@@ -30,37 +30,43 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" action="<?php echo base_url(); ?>employee/add" method="post">
+                    <?php echo validation_errors('<div class="error">', '</div>'); ?>
+                    <br>
+                    <form class="form-horizontal" action="<?php echo base_url(); ?>employee/add" method="post" enctype="multipart/form-data">
                         <div class="form-group row m-b-25">
                             <div class="col-md-12">
                                 <label for="name">Full Name</label>
-                                <input class="form-control" type="text"  name="name"  required="" >
+                                <input class="form-control" type="text"  name="name"  value="<?php echo set_value('name'); ?>" required>
+                                <div class="error"><?php echo form_error('name'); ?></div>
                             </div>
                         </div>
 
                         <div class="form-group row m-b-25">
                             <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input class="form-control" type="email"  name="email_id" required="" >
+                                <input class="form-control" type="email"  name="email_id" value="<?php echo set_value('email_id'); ?>" required="" >
+                                <div class="error"><?php echo form_error('email_id'); ?></div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phone">Mobile number</label>
-                                <input class="form-control" type="text" name="mobile_no"  required="" >
+                                <input class="form-control" type="text" name="mobile_no"  value="<?php echo set_value('mobile_no'); ?>" required="" >
+                                <div class="error"><?php echo form_error('mobile_no'); ?></div>
                             </div>
                         </div>
 
                         <div class="form-group row m-b-25">
                             <div class="col-md-12">
                                 <label for="address">Address</label>
-                                <input class="form-control" type="text" name="address"  required="" >
+                                <input class="form-control" type="text" name="address"  value="<?php echo set_value('address'); ?>" required="" >
+                                <div class="error"><?php echo form_error('address'); ?></div>
                             </div>
 
                         </div>
                         <div class="form-group row m-b-25">
                             <div class="col-md-6">
-                                <label for="username">Designation</label>
-                                <select class="form-control" name="designaiton">
-                                    <option>Select Designation</option>
+                                <label for="designation_id">Designation</label>
+                                <select class="form-control" name="designation_id">
+                                    <option disabled="disabled" selected="selected">Select Designation</option>
                                     <?php
                                         if (!empty($designation)) {
                                             foreach ($designation as $key => $value) {
@@ -71,7 +77,15 @@
                                         }
                                     ?>
                                 </select>
+                                <div class="error"><?php echo form_error('designation_id'); ?></div>
                             </div>
+                        </div>
+                        <div class="form-group row m-b-25">
+                            <div class="col-md-12">
+                                <label for="address">Profile Image</label>
+                                <input class="" type="file" name="profile_image">
+                            </div>
+
                         </div>
                         <button type="submit" class="btn btn-primary">Save Employee</button>
                     </form>

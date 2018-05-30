@@ -64,8 +64,14 @@
                                         <tr class="gradeX" id="employee-<?= $value['id'] ?>">
                                             <td><?= $value['name']; ?></td>
                                             <td><?= $value['email_id']; ?></td>
-                                            <td><?= $value['mobile_id']; ?></td>
+                                            <td><?= $value['mobile_no']; ?></td>
                                             <td class="center"><?= $value['address']; ?></td>
+                                            <td class="center">
+                                                <?php  
+                                                    $designation=$this->designation_model->get_designation_by_id($value['designation_id']);
+                                                    echo $designation['designation_name'];
+                                                ?>
+                                            </td>
                                             <td class="center"><?= $value['created_at']; ?></td>
                                             <td>
                                                 <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#edit-customer"  data-id="<?= $value['id'] ?>" name="edit_employee" id="edit_employee">Edit</a>
@@ -300,7 +306,7 @@ if (!empty($customer_groups)) {
 
 
 <?php
-if ($error = $this->session->flashdata('update_success')) {
+if (($error = $this->session->flashdata('update_success')) || $error = $this->session->flashdata('add_success')) {
     ?>
     <script>
         setTimeout(function () {
@@ -310,12 +316,12 @@ if ($error = $this->session->flashdata('update_success')) {
                 showMethod: 'slideDown',
                 timeOut: 4000
             };
-            toastr.success('<?php echo $this->session->flashdata('update_success'); ?>', 'Success');
+            toastr.success('<?php echo $error; ?>', 'Success');
 
         }, 1300);
     </script>
     <?php
-} elseif ($error = $this->session->flashdata('update_failed')) {
+} elseif ($error = $this->session->flashdata('update_failed') || $error = $this->session->flashdata('add_failed')) {
     ?>
     <script>
         setTimeout(function () {
@@ -325,7 +331,7 @@ if ($error = $this->session->flashdata('update_success')) {
                 showMethod: 'slideDown',
                 timeOut: 4000
             };
-            toastr.error('<?php echo $this->session->flashdata('update_failed'); ?>', 'Error');
+            toastr.error('<?php echo $error; ?>', 'Error');
 
         }, 1300);
     </script>

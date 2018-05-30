@@ -9,6 +9,11 @@ class Designation_model extends CI_Model {
         $query=$this->db->get('tbl_designation');
         return $query->result_array();
     }
+    function get_designation_by_id($id) {
+        $this->db->where('id',$id);
+        $query=$this->db->get('tbl_designation');
+        return $query->row_array();
+    }
     function add_customer_group($group_data) {
         $this->db->trans_start();
         $this->db->insert('tbl_customer_groups', $group_data);

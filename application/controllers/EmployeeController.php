@@ -49,25 +49,39 @@ class EmployeeController extends CI_Controller {
         } else {
             if($this->input->post()){
                 $this->form_validation->set_rules('name', 'Full Name', 'trim|required');
-                $this->form_validation->set_rules('mobile_no', 'Mobile Number', 'trim|required|numeric');
-                $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
+                $this->form_validation->set_rules('mobile_no', 'Mobile Number', 'trim|required|numeric|regex_match[/^[0-9]{10}$/]');
+                $this->form_validation->set_rules('designation_id','Designation', 'required');
                 $this->form_validation->set_rules('address', 'Address', 'trim|required');
                 $this->form_validation->set_rules('email_id', 'Email', 'trim|required');
+                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
                 if($this->form_validation->run() == TRUE){
                     $details = $this->input->post();
+                    if (!empty($_FILES['profile_image']['name'])) {
+                        $config = array();
+                        $config['upload_path'] = 'assets/images/employee/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('profile_image');
+                        $upload_data = $this->upload->data();
+                        $profile_image= $upload_data['file_name'];   
+                    } else {
+                        $profile_image= '';   
+                    }
                     $details['created_at'] = date('Y-m-d H:i:s');
+                    $details['updated_at'] = date('Y-m-d H:i:s');
+                    $details['profile_image'] = $profile_image;
                     $result = $this->employee_model->add_employee($details);
                     if ($result) {
                         $this->session->set_flashdata('add_success', 'Employee Added Succesfully');
                         return redirect('employee', 'refresh');
                     } else {
+                        $this->session->set_flashdata('add_failed', 'Failed to add employee');
                         $data['designation']=$this->designation_model->get_designation();
                         $this->load->view('includes/header');
                         $this->load->view('includes/sidebar');
                         $this->load->view('employee/form_data', $data);
                         $this->load->view('includes/footer');
                     }
-                    
                 }else{
                     $data['designation']=$this->designation_model->get_designation();
                     $this->load->view('includes/header');
@@ -75,7 +89,6 @@ class EmployeeController extends CI_Controller {
                     $this->load->view('employee/form_data', $data);
                     $this->load->view('includes/footer');
                 }
-                
             }else{
                 $data['designation']=$this->designation_model->get_designation();
                 $this->load->view('includes/header');
