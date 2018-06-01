@@ -63,6 +63,12 @@ $route['employee/add']="EmployeeController/add";
 $route['employee/edit']="EmployeeController/edit";
 $route['employee/delete']="EmployeeController/delete";
 
+/*Designation Routes*/
+$route['designation']="DesignationController/index";
+$route['designation/add']="DesignationController/add";
+$route['designation/edit']="DesignationController/edit";
+$route['designation/delete']="DesignationController/delete";
+
 /*Customer Routes*/
 
 /*Transaction Routes*/

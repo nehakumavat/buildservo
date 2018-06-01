@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Employee</h2>
+        <h2>Designation</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="index.html">Home</a>
@@ -9,13 +9,13 @@
                 <a>Dashboard</a>
             </li>
             <li class="active">
-                <strong>Employee</strong>
+                <strong>Designation</strong>
             </li>
         </ol>
     </div>
     <div class="col-lg-2">
 <!--        <a href="javascript:void(0);" data-toggle="modal" data-target="#add-customer"   class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-plus mr-2"></i> Add New Customer</a>-->
-        <a href="<?= base_url()?>employee/add" class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-plus mr-2"></i> Add New Employee</a>
+        <a href="<?= base_url()?>designation/add" class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-plus mr-2"></i> Add New Designation</a>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -23,7 +23,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Employee Records</h5>
+                    <h5>Designation Records</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -47,35 +47,22 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email id</th>
-                                    <th>Phone Number</th>
-                                    <th>Address</th>
-                                    <th>Designation</th>
+                                    <th>Designation Name</th>
                                     <th>Created at</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                                if (!empty($employee_list)) {
-                                    foreach ($employee_list as $key => $value) {
+                                if (!empty($designation_list)) {
+                                    foreach ($designation_list as $key => $value) {
                                         ?>
                                         <tr class="gradeX" id="employee-<?= $value['id'] ?>">
-                                            <td><?= $value['name']; ?></td>
-                                            <td><?= $value['email_id']; ?></td>
-                                            <td><?= $value['mobile_no']; ?></td>
-                                            <td class="center"><?= $value['address']; ?></td>
-                                            <td class="center">
-                                                <?php  
-                                                    $designation=$this->designation_model->get_designation_by_id($value['designation_id']);
-                                                    echo $designation['designation_name'];
-                                                ?>
-                                            </td>
+                                            <td><?= $value['designation_name']; ?></td>
                                             <td class="center"><?= $value['created_at']; ?></td>
                                             <td>
-                                                <a href="<?= base_url()?>employee/edit?id=<?= $value['id'] ?>"  class="btn btn-primary" data-id="<?= $value['id'] ?>" name="edit_employee">Edit</a>
-                                                <a href="<?= base_url()?>employee/delete?id=<?= $value['id'] ?>" class="btn btn-danger delete-customer" data-index="<?= $value['id'] ?>" name="delete-customer">Delete</a><br>
+                                                <a href="<?= base_url()?>designation/edit?id=<?= $value['id'] ?>"  class="btn btn-primary" data-id="<?= $value['id'] ?>" name="edit_employee">Edit</a>
+                                                <a href="<?= base_url()?>designation/delete?id=<?= $value['id'] ?>" class="btn btn-danger delete-customer" data-index="<?= $value['id'] ?>" name="delete-customer">Delete</a><br>
                                             </td>
                                         </tr>
                                         <?php

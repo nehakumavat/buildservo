@@ -95,7 +95,7 @@
                                 <?php } ?>
                             </div>
                         </div>
-                        <?php if(!empty($employee_detail['profile_image'])){ ?>
+                        <?php if(!empty($employee_detail['id'])){ ?>
                                 <input type="hidden" name="id" value="<?= $employee_detail['id']?$employee_detail['id']:''?>">
                         <?php } ?>
                         <button type="submit" class="btn btn-primary">Save Employee</button>

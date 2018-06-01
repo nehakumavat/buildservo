@@ -172,7 +172,28 @@ class EmployeeController extends CI_Controller {
         }
         
     }
-
+    public function delete()
+    {   
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('LoginController/index', 'refresh');
+        } else {
+            $get=$this->input->get();
+            if(!empty($get)){
+                $result=$this->employee_model->delete_employee($get['id']);
+                if($result){
+                    $this->session->set_flashdata('add_success', 'Employee Deleted Succesfully');
+                    return redirect('employee', 'refresh');
+                }else{
+                    $this->session->set_flashdata('add_failed', 'Employee cannot deleted');
+                    return redirect('employee', 'refresh');
+                }
+            }else{
+                return redirect('employee', 'refresh');
+            }
+        }
+        
+    }
     public function customer_groups() {
         $logged_in = $_SESSION['logged_in'];
 
