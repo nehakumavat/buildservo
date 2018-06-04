@@ -1,69 +1,40 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Customer_model extends CI_Model
-{
-   function add_customer_group($group_data)
-   {
-   		$this->db->trans_start();
-        $this->db->insert('tbl_customer_groups', $group_data);
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
-        $insert_id = $this->db->insert_id();
-
-        $this->db->trans_complete();
-
-        return $insert_id;
-   }
-   function customer_groups()
-   {
-   		$query = $this->db->query("SELECT * from tbl_customer_groups");
-		return $query->result();
-   }
-   public function delete_group($id)
-   {
-   		return $this->db->delete('tbl_customer_groups',['group_id'=>$id]);
-   }
-
-
-   function add_customer($customer_data)
-   {
-   		$this->db->trans_start();
-        $this->db->insert('tbl_customers', $customer_data);
-
-        $insert_id = $this->db->insert_id();
-
-        $this->db->trans_complete();
-
-        return $insert_id;
-   }
-   function customers()
-   {
-   		$query = $this->db->query("SELECT c.*,cg.group_name from tbl_customers c,tbl_customer_groups cg WHERE c.group_id=cg.group_id");
-		return $query->result();
-   }
-   public function delete_customer($id)
-   {
-   		return $this->db->delete('tbl_customers',['customer_id'=>$id]);
-   }
-   function customer($id)
-   {
-   		$query = $this->db->query("SELECT c.* from tbl_customers c WHERE c.customer_id='$id'");
-		return $query->row();
-   }
-   public function update_customer($customer_id,$customer_data)
-  {
-    $query= $this->db
-    ->where('customer_id',$customer_id)
-    ->update('tbl_customers',$customer_data);
-
-    if($query)
-    {
-      return true; 
+class Customer_model extends CI_Model {
+    function get_customer() {
+        $this->db->where('is_deleted',0);
+        $query=$this->db->get('tbl_customer_profile');
+        return $query->result_array();
     }
-    else
-    {
-      return false;
-    }  
-  }
+    function get_customer_by_id($id) {
+        $this->db->where('customer_profile_id',$id);
+        $query=$this->db->get('tbl_customer_profile');
+        return $query->row_array();
+    }
+    function add_customer($data) {
+        $this->db->trans_start();
+        $this->db->insert('tbl_customer_profile', $data);
+        $this->db->trans_complete();
+        return true;
+    }
+    function edit_customer($data) {
+        $this->db->trans_start();
+        $this->db->where('customer_profile_id',$data['id']);
+        $this->db->update('tbl_customer_profile', $data);
+        $this->db->trans_complete();
+        return true;
+    }
+    function delete_customer($id){
+        $data=array('is_deleted'=>1);
+        $this->db->trans_start();
+        $this->db->where('customer_profile_id',$id);
+        $this->db->update('tbl_customer_profile', $data);
+        $this->db->trans_complete();
+        return true;
+        
+    }
+    
 }
-
-  

@@ -67,9 +67,9 @@ $route['contact-us']='HomeController/contact_us';
 $route['sitemap']='HomeController/sitemap';
 $route['faq']='HomeController/faq';
 
-
-/*$route['login']="LoginController/login";
-$route['logout']="LoginController/logout";*/
+$route['admin']="LoginController/index";
+$route['admin/login']="LoginController/login";
+$route['logout']="LoginController/logout";
 $route['dashboard']="DashboardController/dashboard";
 
 /*Employee Routes*/
@@ -84,22 +84,18 @@ $route['designation/add']="DesignationController/add";
 $route['designation/edit']="DesignationController/edit";
 $route['designation/delete']="DesignationController/delete";
 
-/*Customer Routes*/
+/*Service Routes*/
+$route['service']="ServiceController/index";
+$route['service/add']="ServiceController/add";
+$route['service/delete']="ServiceController/delete";
+$route['service/edit']="ServiceController/edit";
 
-/*Transaction Routes*/
-$route['transactions']="TransactionController/transactions";
-$route['add-transaction']="TransactionController/add_transaction";
-$route['delete-transaction']="TransactionController/delete_transaction";
-$route['transaction']="TransactionController/transaction";
-$route['update-transaction']="TransactionController/update_transaction";
-/*Transaction Routes*/
 
 /*Customers Routes*/
-$route['customers']="CustomerController/customers";
-$route['add-customer']="CustomerController/add_customer";
-$route['delete-customer']="CustomerController/delete_customer";
-$route['customer']="CustomerController/customer";
-$route['update-customer']="CustomerController/update_customer";
+$route['customer']="CustomerController/index";
+$route['customer/add']="CustomerController/add_customer";
+$route['customer/delete']="CustomerController/delete";
+$route['customer/update']="CustomerController/update_customer";
 /*Customer Routes*/
 
 /*Customer Group Routes*/

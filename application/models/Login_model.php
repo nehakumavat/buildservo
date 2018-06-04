@@ -19,7 +19,7 @@ class Login_model extends CI_Model {
     public function validate_admin($username, $password) {
         
         $this->db->where('username', $username);
-        $this->db->where('password', md5($password));
+        $this->db->where('password', md5($password));// admin@123
         $query = $this->db->get('tbl_admin');
         if($query->num_rows() == 1){
             return true;

@@ -30,16 +30,13 @@
                         <a href="<?php echo base_url();?>designation"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Designation</span></h3></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url();?>barcodes"><h3><i class="fa fa-barcode"></i> <span class="nav-label">Barcodes</span></h3></a>
+                        <a href="<?php echo base_url();?>customer"><h3><i class="fa fa-users"></i> <span class="nav-label">Customers</span></h3></a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url();?>brands"><h3><i class="fa fa-certificate"></i> <span class="nav-label">Brands</span></h3></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url();?>customers"><h3><i class="fa fa-users"></i> <span class="nav-label">Customers</span></h3></a>
+                        <a href="<?php echo base_url();?>service"><h3><i class="fa fa-cube"></i> <span class="nav-label">Service</span></h3></a>
                     </li>
                     
-                    <li>
+<!--                    <li>
                         <a href="index.html"><h3><i class="fa fa-th-large"></i> <span class="nav-label">Inventory</span> <span class="fa arrow"></span></h3></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -50,21 +47,8 @@
                             </li>
                             
                         </ul>
-                    </li>
+                    </li>-->
                     
-                    
-                    <li>
-                        <a href="<?php echo base_url();?>purchase-orders"><h3><i class="fa fa-file-excel-o"></i><span class="nav-label">Purchase Orders</span></h3></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url();?>sales-orders"><h3><i class="fa fa-file-code-o"></i><span class="nav-label">Sales Orders</span></h3></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url();?>suppliers"><h3><i class="fa fa-truck"></i> <span class="nav-label">Suppliers</span></h3></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url();?>transactions"><h3><i class="fa fa-money"></i> <span class="nav-label">Transactions</span></h3></a>
-                    </li>
                 </ul>
 
             </div>

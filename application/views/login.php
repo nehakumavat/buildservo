@@ -10,7 +10,7 @@
                 Continually expanded and constantly improved Inspinia Admin Them (IN+)
             </p> -->
             <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="<?php echo base_url();?>login" method="POST">
+            <form class="m-t" role="form" action="<?= base_url()?>admin/login" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Username" name="username" id="username">
                 </div>
