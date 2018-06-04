@@ -28,5 +28,18 @@ class Login_model extends CI_Model {
         }
         
     }
+    public function login_validate($data) {
+        
+        $this->db->where('customer_email', $data['customer_email']);
+        $this->db->where('customer_password', md5($data['customer_password']));
+        $query = $this->db->get('tbl_customer_profile');
+        if($query->num_rows() == 1){
+            $result=$query->row_array();
+            return $result;
+        }else{
+            return false;
+        }
+        
+    }
 
 }

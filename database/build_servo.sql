@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 29, 2018 at 11:16 PM
+-- Generation Time: Jun 04, 2018 at 11:24 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.2.1-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -71,23 +71,6 @@ CREATE TABLE `tbl_contact_us` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_custmore_profile`
---
-
-CREATE TABLE `tbl_custmore_profile` (
-  `custmore_profile_id` int(100) NOT NULL,
-  `custmore_address` varchar(250) NOT NULL,
-  `custmore_city` text NOT NULL,
-  `custmore_pincode` int(100) NOT NULL,
-  `custmore_mob` int(100) NOT NULL,
-  `custmore_email` varchar(100) NOT NULL,
-  `custmore_password` varchar(100) NOT NULL,
-  `new_password` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_custmore_services_requirement`
 --
 
@@ -97,6 +80,35 @@ CREATE TABLE `tbl_custmore_services_requirement` (
   `service_name` text NOT NULL,
   `requiement_detail` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_customer_profile`
+--
+
+CREATE TABLE `tbl_customer_profile` (
+  `customer_profile_id` int(100) NOT NULL,
+  `customer_name` varchar(100) NOT NULL,
+  `customer_address` varchar(250) NOT NULL,
+  `customer_city` varchar(50) NOT NULL,
+  `customer_pincode` int(7) NOT NULL,
+  `customer_mob` bigint(12) NOT NULL,
+  `customer_email` varchar(100) NOT NULL,
+  `customer_password` text NOT NULL,
+  `is_active` int(5) NOT NULL,
+  `is_deleted` int(5) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `new_password` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_customer_profile`
+--
+
+INSERT INTO `tbl_customer_profile` (`customer_profile_id`, `customer_name`, `customer_address`, `customer_city`, `customer_pincode`, `customer_mob`, `customer_email`, `customer_password`, `is_active`, `is_deleted`, `created_at`, `updated_at`, `new_password`) VALUES
+(1, 'Nikhil Vharamble', 'pune', 'pune', 411063, 1234567890, 'niks@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-06-04 22:00:52', '2018-06-04 22:00:52', '');
 
 -- --------------------------------------------------------
 
@@ -128,12 +140,23 @@ CREATE TABLE `tbl_employee` (
   `id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
   `email_id` varchar(100) NOT NULL,
-  `mobile_no` int(12) NOT NULL,
+  `mobile_no` bigint(20) NOT NULL,
   `address` varchar(255) NOT NULL,
   `designation_id` int(11) NOT NULL,
+  `profile_image` varchar(150) NOT NULL,
+  `is_deleted` int(5) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_employee`
+--
+
+INSERT INTO `tbl_employee` (`id`, `name`, `email_id`, `mobile_no`, `address`, `designation_id`, `profile_image`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 'akshay tambekar', 'akshay@gmail.com', 2147483647, 'Pune', 1, '', 0, '2018-05-30 22:03:30', '2018-05-30 22:03:30'),
+(2, 'nikhil vharamble', 'niks@gmail.com', 1234567890, 'pune', 2, '', 0, '2018-05-30 22:06:32', '2018-05-30 22:06:32'),
+(3, 'akshu tambekar', 'akshu@gmail.com', 9876543210, 'Kolhpaur', 1, 'coepfinal1.jpg', 0, '2018-05-30 22:51:40', '2018-05-30 23:01:55');
 
 -- --------------------------------------------------------
 
@@ -165,6 +188,23 @@ CREATE TABLE `tbl_selected_services` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_service`
+--
+
+CREATE TABLE `tbl_service` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `description` text NOT NULL,
+  `service_image` varchar(150) NOT NULL,
+  `service_status` int(5) NOT NULL,
+  `is_deleted` int(5) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_service_booking`
 --
 
@@ -191,10 +231,10 @@ ALTER TABLE `tbl_company_signup`
   ADD PRIMARY KEY (`company_id`);
 
 --
--- Indexes for table `tbl_custmore_profile`
+-- Indexes for table `tbl_customer_profile`
 --
-ALTER TABLE `tbl_custmore_profile`
-  ADD PRIMARY KEY (`custmore_profile_id`);
+ALTER TABLE `tbl_customer_profile`
+  ADD PRIMARY KEY (`customer_profile_id`);
 
 --
 -- Indexes for table `tbl_designation`
@@ -221,6 +261,12 @@ ALTER TABLE `tbl_selected_services`
   ADD PRIMARY KEY (`service_id`);
 
 --
+-- Indexes for table `tbl_service`
+--
+ALTER TABLE `tbl_service`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_service_booking`
 --
 ALTER TABLE `tbl_service_booking`
@@ -241,15 +287,20 @@ ALTER TABLE `tbl_admin`
 ALTER TABLE `tbl_company_signup`
   MODIFY `company_id` int(100) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tbl_custmore_profile`
+-- AUTO_INCREMENT for table `tbl_customer_profile`
 --
-ALTER TABLE `tbl_custmore_profile`
-  MODIFY `custmore_profile_id` int(100) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_customer_profile`
+  MODIFY `customer_profile_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_designation`
 --
 ALTER TABLE `tbl_designation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_employee`
+--
+ALTER TABLE `tbl_employee`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_list_area`
 --
@@ -260,6 +311,11 @@ ALTER TABLE `tbl_list_area`
 --
 ALTER TABLE `tbl_selected_services`
   MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_service`
+--
+ALTER TABLE `tbl_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_service_booking`
 --

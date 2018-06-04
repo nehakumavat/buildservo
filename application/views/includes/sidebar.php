@@ -35,6 +35,15 @@
                     <li>
                         <a href="<?php echo base_url();?>service"><h3><i class="fa fa-cube"></i> <span class="nav-label">Service</span></h3></a>
                     </li>
+                    <li>
+                        <a href="javascript:void(0)"><h3><i class="fa fa-cube"></i> <span class="nav-label">Customer Booking Service</span></h3></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><h3><i class="fa fa-cube"></i> <span class="nav-label">Customer Feedback</span></h3></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><h3><i class="fa fa-cube"></i> <span class="nav-label">Contact us</span></h3></a>
+                    </li>
                     
 <!--                    <li>
                         <a href="index.html"><h3><i class="fa fa-th-large"></i> <span class="nav-label">Inventory</span> <span class="fa arrow"></span></h3></a>
@@ -70,7 +79,7 @@
                     <span class="m-r-sm text-muted welcome-message">Welcome to TRENDZ Admin Panel.</span>
                 </li>
                 <li>
-                    <a href="<?php echo base_url();?>logout">
+                    <a href="<?php echo base_url();?>admin/logout">
                         <i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>

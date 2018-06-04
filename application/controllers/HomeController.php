@@ -9,13 +9,44 @@ class HomeController extends CI_Controller {
         $this->load->model('customer_model');
         $this->load->model('employee_model');
         $this->load->model('designation_model');
+        $this->load->model('login_model');
     }
 
     public function login() {
-        
-        $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/login');
-        $this->load->view('frontend/includes/footer');
+        if($this->input->post()){
+            $this->form_validation->set_rules('customer_email','E-mail', 'required');
+            $this->form_validation->set_rules('customer_password', 'Password', 'trim|required');
+            if($this->form_validation->run() == TRUE){
+                $details = $this->input->post();
+                $result=$this->login_model->login_validate($details);
+                if($result){
+                    $session_data=array('customer_profile_id'=>$result['customer_profile_id'],
+                                        'customer_name'=>$result['customer_name'],
+                                        'customer_mob'=>$result['customer_mob'],
+                                        'customer_email'=>$result['customer_email'],
+                                        'logged_in' => TRUE,
+                                        'type'=>2,
+                                    );
+                    $this->session->set_userdata('user',$session_data);
+                    $this ->session-> set_flashdata('Message','Successfully Login'); 
+                    redirect('home', 'refresh');
+                    
+                }else{
+                    $this ->session-> set_flashdata('Error','Email or Password is incorrect'); 
+                    $this->load->view('frontend/includes/header');
+                    $this->load->view('frontend/login');
+                    $this->load->view('frontend/includes/footer');
+                }
+            }else{
+                $this->load->view('frontend/includes/header');
+                $this->load->view('frontend/login');
+                $this->load->view('frontend/includes/footer');
+            }
+        }else{
+            $this->load->view('frontend/includes/header');
+            $this->load->view('frontend/login');
+            $this->load->view('frontend/includes/footer');
+        }
     }
 
     public function register() {
@@ -125,5 +156,8 @@ class HomeController extends CI_Controller {
         $this->load->view('frontend/faq');
         $this->load->view('frontend/includes/footer');
     }
-
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('home','refresh');
+    }
 }

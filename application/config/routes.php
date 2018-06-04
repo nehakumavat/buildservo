@@ -55,6 +55,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['login']='HomeController/login';
+$route['logout']='HomeController/logout';
 $route['register']='HomeController/register';
 $route['home']='HomeController/home';
 $route['about-us']='HomeController/about_us';
@@ -69,7 +70,7 @@ $route['faq']='HomeController/faq';
 
 $route['admin']="LoginController/index";
 $route['admin/login']="LoginController/login";
-$route['logout']="LoginController/logout";
+$route['admin/logout']="LoginController/logout";
 $route['dashboard']="DashboardController/dashboard";
 
 /*Employee Routes*/

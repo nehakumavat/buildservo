@@ -31,32 +31,10 @@ class LoginController extends CI_Controller {
     }
 
     public function login() {//function for admin login
-
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        
-        //$result = $this->login_model->validate($username, $password);
         $result = $this->login_model->validate_admin($username, $password);  // For admin login only
         if (!empty($result)) {
-//            foreach ($result as $res) {
-//                if ($res->status === '1') {
-//                    $newdata = array
-//                        (
-//                        'id' => $res->id,
-//                        'name' => $res->name,
-//                        'username' => $res->username,
-//                        'password' => $res->password,
-//                        'type' => $res->type,
-//                        'status' => $res->status,
-//                        'privileges' => $res->privileges,
-//                        //'image'=>$res->adminfile,
-//                        'logged_in' => TRUE
-//                    );
-//                    $this->session->set_userdata($newdata);
-//                    $this->session->set_flashdata('login_success', 'Welcome to your Dashboard');
-//                    redirect('dashboard', 'refresh');
-//                }
-//            }
                       $newdata = array (
                                         'id' => 1,
                                         'name' => 'Admin Master',
@@ -76,7 +54,6 @@ class LoginController extends CI_Controller {
     }
     public function logout() {
         $this->session->sess_destroy();
-
         redirect('LoginController/index', 'refresh');
     }
 
