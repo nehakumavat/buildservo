@@ -185,5 +185,104 @@ class ServiceController extends CI_Controller {
         }
         
     }
-    
+    public function service_booking() {
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('home', 'refresh');
+        } else {
+           
+            $data['service_list'] = $this->service_model->get_service();
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('service/service_booking_list', $data);
+            $this->load->view('includes/footer');
+        }
+    }
+    public function service_booking_view() 
+    {
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('home', 'refresh');
+        } else {
+            $get=$this->input->get();    
+            $data['service_detail']=$this->service_model->get_service_by_id($get['id']);
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('service/service_booking_view', $data);
+            $this->load->view('includes/footer');
+        }
+    }
+    public function book_service()
+    {
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('home', 'refresh');
+        } else {
+            $get=$this->input->get();
+            if($this->input->post()){
+                $this->form_validation->set_rules('booking_date', 'Booking Date', 'trim|required');
+                $this->form_validation->set_rules('address', 'Adderss', 'trim|required');
+                $this->form_validation->set_rules('city','City', 'required');
+                $this->form_validation->set_rules('pincode','Pincode', 'required|numeric|regex_match[/^[0-9]{6}$/]');
+                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+                $details = $this->input->post();
+                if($this->form_validation->run() == TRUE){
+                    
+                    $date=date_create($details['booking_date']);
+                    $booking_date=date_format($date,"Y-m-d");      
+                    $details['booking_date'] = $booking_date;
+                    $details['service_status'] = 1;
+                    $details['customer_id'] = $this->session->userdata('customer_profile_id');
+                    $details['created_at'] = date('Y-m-d H:i:s');
+                    $details['updated_at'] = date('Y-m-d H:i:s');
+                    $result = $this->service_model->book_service($details);
+                    if ($result) {
+                        $this->session->set_flashdata('add_success', 'Your Service is book successfully.');
+                        return redirect('service/service_booking', 'refresh');
+                    } else {
+                        $this->session->set_flashdata('add_failed', 'Failed to book service');
+                        $data['title']='Add';
+                        $data['service_detail']=$this->service_model->get_service_by_id($details['service_id']);
+                        $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                        $this->load->view('includes/header');
+                        $this->load->view('includes/sidebar');
+                        $this->load->view('service/book_service_form', $data);
+                        $this->load->view('includes/footer');
+                    }
+                }else{
+                    $data['title']='Add';
+                    $data['service_detail']=$this->service_model->get_service_by_id($details['service_id']);
+                    $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                    $this->load->view('includes/header');
+                    $this->load->view('includes/sidebar');
+                    $this->load->view('service/book_service_form', $data);
+                    $this->load->view('includes/footer');
+                }
+            }else{
+                $data['title']='Add';
+                $data['service_detail']=$this->service_model->get_service_by_id($get['id']);
+                $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('service/book_service_form', $data);
+                $this->load->view('includes/footer');
+            }
+            
+        }
+    }
+    public function selected_services() {
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('home', 'refresh');
+        } else {
+            $data['selected_service_list'] = $this->service_model->get_selected_service_by_customer_id($this->session->userdata('customer_profile_id'));
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('service/selected_service_list', $data);
+            $this->load->view('includes/footer');
+        }
+    }
 }

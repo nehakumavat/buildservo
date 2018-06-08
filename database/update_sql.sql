@@ -40,3 +40,10 @@ ALTER TABLE `tbl_service`
 --
 ALTER TABLE `tbl_service`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+/************New Changes************/
+
+ALTER TABLE `tbl_selected_services` ADD `address` VARCHAR(255) NOT NULL AFTER `service_status`, ADD `city` VARCHAR(100) NOT NULL AFTER `address`, ADD `pincode` INT(6) NOT NULL AFTER `city`;
+ALTER TABLE `tbl_selected_services` ADD `created_at` DATETIME NOT NULL AFTER `pincode`, ADD `updated_at` DATETIME NOT NULL AFTER `created_at`;
+ALTER TABLE `tbl_selected_services` CHANGE `custmore_id` `customer_id` INT(100) NOT NULL;
+ALTER TABLE `tbl_selected_services` ADD `service_id` INT NOT NULL AFTER `customer_id`;

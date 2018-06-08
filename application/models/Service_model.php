@@ -37,5 +37,15 @@ class Service_model extends CI_Model {
         return true;
         
     }
-
+    function book_service($data) {
+        $this->db->trans_start();
+        $this->db->insert('tbl_selected_services', $data);
+        $this->db->trans_complete();
+        return true;
+    }
+    function get_selected_service_by_customer_id($customer_id) {
+        $this->db->where('customer_id',$customer_id);
+        $query=$this->db->get('tbl_selected_services');
+        return $query->result_array();
+    }
 }

@@ -106,7 +106,7 @@
                                                             Contact Us
                                                         </a>
                                                     </li>
-                                                    <?php if(!$this->session->userdata('user')['logged_in']){ ?>
+                                                    <?php if(!$this->session->userdata('logged_in')){ ?>
                                                         <li class="dropdown active">
                                                             <a href="<?php echo base_url(); ?>login">
                                                                 Sign In
@@ -125,7 +125,7 @@
                                                             </li>
                                                             <li class="dropdown active">
                                                                 <a href="javascript:void(0)">
-                                                                    <b>Hi, <?= $this->session->userdata('user')['customer_name']?></b>
+                                                                    <b>Hi, <?= $this->session->userdata('customer_name')?></b>
                                                                 </a>
                                                             </li>
                                                     <?php }?>        

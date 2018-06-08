@@ -90,6 +90,10 @@ $route['service']="ServiceController/index";
 $route['service/add']="ServiceController/add";
 $route['service/delete']="ServiceController/delete";
 $route['service/edit']="ServiceController/edit";
+$route['service/service_booking']="ServiceController/service_booking";
+$route['service/service_booking_view']="ServiceController/service_booking_view";
+$route['service/selected_services']="ServiceController/selected_services";
+$route['service/book_service']="ServiceController/book_service";
 
 
 /*Customers Routes*/
