@@ -72,10 +72,10 @@ class HomeController extends CI_Controller {
                 $details['updated_at'] = date('Y-m-d H:i:s');
                 $result = $this->customer_model->add_customer($details);
                 if ($result) {
-                    $this->session->set_flashdata('add_success', 'Register Succesfully');
+                    $this ->session-> set_flashdata('Message','Successfully Register'); 
                     return redirect('login', 'refresh');
                 } else {
-                    $this->session->set_flashdata('add_failed', 'Failed to add employee');
+                    $this ->session-> set_flashdata('Error','Something went wrong please try again!'); 
                     $data['title']='Add';
                     $this->load->view('frontend/includes/header');
                     $this->load->view('frontend/register');
