@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/var/www/html/buildservo/application/controllers/DashboardController.php</file>
+            <file>file:/var/www/html/buildservo/application/controllers/CustomerController.php</file>
+            <file>file:/var/www/html/buildservo/application/controllers/LoginController.php</file>
             <file>file:/var/www/html/buildservo/application/config/routes.php</file>
+            <file>file:/var/www/html/buildservo/application/views/frontend/includes/header.php</file>
             <file>file:/var/www/html/buildservo/application/views/includes/sidebar.php</file>
             <file>file:/var/www/html/buildservo/database/update_sql.sql</file>
+            <file>file:/var/www/html/buildservo/application/controllers/HomeController.php</file>
         </group>
     </open-files>
 </project-private>

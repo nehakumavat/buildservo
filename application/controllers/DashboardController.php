@@ -20,20 +20,14 @@ class DashboardController extends CI_Controller {
 	 */
 	public function dashboard()
 	{
-		$logged_in = $_SESSION['logged_in'];
-
-
-        if(!isset($logged_in) || $logged_in != TRUE)
-        {
-            $this->session->set_flashdata('access_denied', 'Session Expired...Please Login...');
-            redirect('LoginController/index', 'refresh');
-        }
-        else
-        {
-			$this->load->view('includes/header');
-			$this->load->view('includes/sidebar');
-			$this->load->view('dashboard');
-			$this->load->view('includes/footer');
-		}
+            if(!$this->session->userdata('logged_in')){
+                $this->session->set_flashdata('access_denied', 'Session Expired...Please Login...');
+                redirect('LoginController/index', 'refresh');
+            }else{
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('dashboard');
+                $this->load->view('includes/footer');
+            }
 	}
 }

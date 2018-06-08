@@ -31,25 +31,31 @@ class LoginController extends CI_Controller {
     }
 
     public function login() {//function for admin login
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $result = $this->login_model->validate_admin($username, $password);  // For admin login only
-        if (!empty($result)) {
-                      $newdata = array (
-                                        'id' => 1,
-                                        'name' => 'Admin Master',
-                                        'username' => 'admin',
-                                        'type' =>1,
-                                        'status' => 1,
-                                        'logged_in' => TRUE
-                                    );
-            $this->session->set_userdata($newdata);
-            $this->session->set_flashdata('login_success', 'Welcome to your Dashboard');
-            redirect('dashboard', 'refresh');
-            
-        } else {
-            $this->session->set_flashdata('login_failed', 'Invalid Credentials, Please Enter correct ID and Password');
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
             redirect('LoginController/index', 'refresh');
+        }else{
+            
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $result = $this->login_model->validate_admin($username, $password);  // For admin login only
+            if (!empty($result)) {
+                          $newdata = array (
+                                            'id' => 1,
+                                            'name' => 'Admin Master',
+                                            'username' => 'admin',
+                                            'type' =>1,
+                                            'status' => 1,
+                                            'logged_in' => TRUE
+                                        );
+                $this->session->set_userdata($newdata);
+                $this->session->set_flashdata('login_success', 'Welcome to your Dashboard');
+                redirect('dashboard', 'refresh');
+
+            } else {
+                $this->session->set_flashdata('login_failed', 'Invalid Credentials, Please Enter correct ID and Password');
+                redirect('LoginController/index', 'refresh');
+            }
         }
     }
     public function logout() {
