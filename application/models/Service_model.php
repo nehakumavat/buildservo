@@ -48,4 +48,16 @@ class Service_model extends CI_Model {
         $query=$this->db->get('tbl_selected_services');
         return $query->result_array();
     }
+    function get_selected_service_by_id($id) {
+        $this->db->where('id',$id);
+        $query=$this->db->get('tbl_selected_services');
+        return $query->row_array();
+    }
+    function update_selected_service_status($data) {
+        $this->db->trans_start();
+        $this->db->where('id',$data['id']);
+        $this->db->update('tbl_selected_services', $data);
+        $this->db->trans_complete();
+        return true;
+    }
 }

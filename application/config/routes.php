@@ -94,13 +94,15 @@ $route['service/service_booking']="ServiceController/service_booking";
 $route['service/service_booking_view']="ServiceController/service_booking_view";
 $route['service/selected_services']="ServiceController/selected_services";
 $route['service/book_service']="ServiceController/book_service";
-
+$route['service/selected_services_view']="ServiceController/selected_services_view";
+$route['service/selected_services_cancle']="ServiceController/selected_services_cancle";
 
 /*Customers Routes*/
 $route['customer']="CustomerController/index";
 $route['customer/add']="CustomerController/add_customer";
 $route['customer/delete']="CustomerController/delete";
-$route['customer/update']="CustomerController/update_customer";
+$route['customer/editprofile']="CustomerController/editprofile";
+$route['customer/resetpassword']="CustomerController/resetpassword";
 /*Customer Routes*/
 
 /*Customer Group Routes*/

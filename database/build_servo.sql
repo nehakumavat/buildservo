@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2018 at 11:24 PM
+-- Generation Time: Jun 11, 2018 at 10:08 AM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.2.1-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -88,27 +88,28 @@ CREATE TABLE `tbl_custmore_services_requirement` (
 --
 
 CREATE TABLE `tbl_customer_profile` (
-  `customer_profile_id` int(100) NOT NULL,
+  `customer_profile_id` bigint(20) NOT NULL,
   `customer_name` varchar(100) NOT NULL,
   `customer_address` varchar(250) NOT NULL,
-  `customer_city` varchar(50) NOT NULL,
-  `customer_pincode` int(7) NOT NULL,
-  `customer_mob` bigint(12) NOT NULL,
+  `customer_city` varchar(155) NOT NULL,
+  `customer_pincode` int(11) NOT NULL,
+  `customer_mob` bigint(20) NOT NULL,
   `customer_email` varchar(100) NOT NULL,
-  `customer_password` text NOT NULL,
+  `customer_password` varchar(100) NOT NULL,
   `is_active` int(5) NOT NULL,
   `is_deleted` int(5) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `new_password` varchar(100) NOT NULL
+  `updated_at` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_customer_profile`
 --
 
-INSERT INTO `tbl_customer_profile` (`customer_profile_id`, `customer_name`, `customer_address`, `customer_city`, `customer_pincode`, `customer_mob`, `customer_email`, `customer_password`, `is_active`, `is_deleted`, `created_at`, `updated_at`, `new_password`) VALUES
-(1, 'Nikhil Vharamble', 'pune', 'pune', 411063, 1234567890, 'niks@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-06-04 22:00:52', '2018-06-04 22:00:52', '');
+INSERT INTO `tbl_customer_profile` (`customer_profile_id`, `customer_name`, `customer_address`, `customer_city`, `customer_pincode`, `customer_mob`, `customer_email`, `customer_password`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(2, 'Akshay', 'pune', 'pune', 411037, 7709975028, 'a@g.c', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-06-04 10:50:33', '2018-06-04 10:50:33'),
+(3, 'xyz', 'pune', 'pune', 411069, 3214567890, 'xyz@g.c', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, '2018-06-04 11:16:52', '2018-06-04 11:16:52'),
+(4, 'Akki Tambekar', 'kalamba', 'kolhapur', 416007, 7709975028, 'akki@gmail.com', '2de1b2d6a6738df78c5f9733853bd170', 1, 0, '2018-06-05 11:17:44', '2018-06-10 18:52:20');
 
 -- --------------------------------------------------------
 
@@ -154,9 +155,9 @@ CREATE TABLE `tbl_employee` (
 --
 
 INSERT INTO `tbl_employee` (`id`, `name`, `email_id`, `mobile_no`, `address`, `designation_id`, `profile_image`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 'akshay tambekar', 'akshay@gmail.com', 2147483647, 'Pune', 1, '', 0, '2018-05-30 22:03:30', '2018-05-30 22:03:30'),
-(2, 'nikhil vharamble', 'niks@gmail.com', 1234567890, 'pune', 2, '', 0, '2018-05-30 22:06:32', '2018-05-30 22:06:32'),
-(3, 'akshu tambekar', 'akshu@gmail.com', 9876543210, 'Kolhpaur', 1, 'coepfinal1.jpg', 0, '2018-05-30 22:51:40', '2018-05-30 23:01:55');
+(1, 'Akshay', 'akshay@gmail.com', 2147483647, 'pune', 1, 'best-poker-hands3.png', 0, '2018-05-30 19:38:19', '2018-05-30 19:38:19'),
+(2, 'abc', 'abc@gmail.com', 1234567890, 'pune', 1, 'India-licensed-poker-website2.png', 0, '2018-05-30 19:50:35', '2018-06-01 16:37:50'),
+(4, 'xyz', 'xyz@g.c', 2147483647, 'pune', 2, 'poker-hands.png', 1, '2018-05-30 19:56:22', '2018-05-30 19:56:22');
 
 -- --------------------------------------------------------
 
@@ -178,12 +179,26 @@ CREATE TABLE `tbl_list_area` (
 --
 
 CREATE TABLE `tbl_selected_services` (
-  `custmore_id` int(100) NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `customer_id` int(100) NOT NULL,
+  `service_id` int(11) NOT NULL,
   `booking_date` datetime NOT NULL,
-  `service_id` int(100) NOT NULL,
-  `service_name` varchar(250) NOT NULL,
-  `service_status` int(15) NOT NULL
+  `service_status` int(15) NOT NULL COMMENT 'Pending=1,Confirmed=2,Cancelled=3,In progress=4,Completed=5',
+  `address` varchar(255) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `pincode` int(6) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_selected_services`
+--
+
+INSERT INTO `tbl_selected_services` (`id`, `customer_id`, `service_id`, `booking_date`, `service_status`, `address`, `city`, `pincode`, `created_at`, `updated_at`) VALUES
+(6, 4, 3, '2018-06-15 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-08 18:18:57', '2018-06-08 18:18:57'),
+(7, 4, 5, '2018-06-22 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-08 18:19:11', '2018-06-08 18:19:11'),
+(8, 4, 9, '2018-06-14 00:00:00', 1, 'pune', 'pune', 411068, '2018-06-10 17:23:17', '2018-06-10 17:23:17');
 
 -- --------------------------------------------------------
 
@@ -201,6 +216,21 @@ CREATE TABLE `tbl_service` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_service`
+--
+
+INSERT INTO `tbl_service` (`id`, `name`, `description`, `service_image`, `service_status`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 'Plumbing', 'Plumbing Description', 'Plumbing.jpg', 1, 0, '2018-06-04 19:53:42', '2018-06-08 12:39:20'),
+(2, 'XYZ', 'XYZ Description', 'India-licensed-poker-website1.png', 2, 1, '2018-06-04 19:57:53', '2018-06-04 20:01:20'),
+(3, 'Tile repairing & Work', 'Tile repairing & Work description', 'tiles_work.jpg', 1, 0, '2018-06-08 12:37:46', '2018-06-08 12:37:46'),
+(4, 'House design & Build', 'House design & Build Description', 'house_work.jpg', 1, 0, '2018-06-08 12:38:09', '2018-06-08 12:38:09'),
+(5, 'Interior designing', 'Interior designing Description', 'Interior_designing.jpg', 1, 0, '2018-06-08 12:38:53', '2018-06-08 12:38:53'),
+(6, 'Electrical light fitting', 'Electrical light fitting Description', 'Electrical_fitting.jpg', 1, 0, '2018-06-08 12:39:12', '2018-06-08 12:39:12'),
+(7, 'Painting', 'Painting Description', 'Painting.jpg', 1, 0, '2018-06-08 12:39:39', '2018-06-08 12:39:39'),
+(8, 'Custom furniture', 'Custom furniture Description', 'Custom_furniture.jpg', 1, 0, '2018-06-08 12:40:00', '2018-06-08 12:40:00'),
+(9, 'Fully furnish', 'Fully furnish description', 'Fully-furnish.jpg', 1, 0, '2018-06-08 12:40:21', '2018-06-08 12:40:21');
 
 -- --------------------------------------------------------
 
@@ -258,7 +288,7 @@ ALTER TABLE `tbl_list_area`
 -- Indexes for table `tbl_selected_services`
 --
 ALTER TABLE `tbl_selected_services`
-  ADD PRIMARY KEY (`service_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_service`
@@ -290,7 +320,7 @@ ALTER TABLE `tbl_company_signup`
 -- AUTO_INCREMENT for table `tbl_customer_profile`
 --
 ALTER TABLE `tbl_customer_profile`
-  MODIFY `customer_profile_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_profile_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_designation`
 --
@@ -300,7 +330,7 @@ ALTER TABLE `tbl_designation`
 -- AUTO_INCREMENT for table `tbl_employee`
 --
 ALTER TABLE `tbl_employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_list_area`
 --
@@ -310,12 +340,12 @@ ALTER TABLE `tbl_list_area`
 -- AUTO_INCREMENT for table `tbl_selected_services`
 --
 ALTER TABLE `tbl_selected_services`
-  MODIFY `service_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_service_booking`
 --

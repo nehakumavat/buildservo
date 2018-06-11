@@ -23,7 +23,8 @@ class CustomerController extends CI_Controller {
         parent::__construct();
         $this->load->model('customer_model');
     }
-    public function index() {
+    public function index() 
+    {
             
         if (!$this->session->userdata('logged_in')) {
             $this->session->set_flashdata('access_denied', 'Please login');
@@ -58,6 +59,109 @@ class CustomerController extends CI_Controller {
             }
         }
         
+    }
+    public function editprofile()
+    {
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('login', 'refresh');
+        }else{
+            
+            if($this->input->post()){
+                $this->form_validation->set_rules('customer_name', 'Full Name', 'trim|required');
+                $this->form_validation->set_rules('customer_mob', 'Mobile Number', 'trim|required|numeric|regex_match[/^[0-9]{10}$/]');
+                $this->form_validation->set_rules('customer_email','E-mail', 'required');
+                $this->form_validation->set_rules('customer_address', 'Address', 'trim|required');
+                $this->form_validation->set_rules('customer_city', 'City', 'trim|required');
+                $this->form_validation->set_rules('customer_pincode', 'Pincode', 'trim|required|regex_match[/^[0-9]{6}$/]');
+                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+                if($this->form_validation->run() == TRUE){
+                    $details = $this->input->post();
+                    $details['updated_at'] = date('Y-m-d H:i:s');
+                    $result = $this->customer_model->edit_customer($details);
+                    if ($result) {
+                        $session_data=array('customer_profile_id'=>$details['customer_profile_id'],
+                                            'customer_name'=>$details['customer_name'],
+                                            'customer_mob'=>$details['customer_mob'],
+                                            'customer_email'=>$details['customer_email'],
+                                        );
+                        $this->session->set_userdata($session_data);
+                        $this->session->set_flashdata('add_success', 'Profile Updated Succesfully');
+                        redirect('customer/editprofile', 'refresh');
+                    } else {
+                        $this->session->set_flashdata('add_failed', 'Failed to update profile');
+                        $data['title']='Edit';
+                        $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                        $this->load->view('includes/header');
+                        $this->load->view('includes/sidebar');
+                        $this->load->view('customer/form_data', $data);
+                        $this->load->view('includes/footer');
+                    }
+                }else{
+                    $data['title']='Edit';
+                    $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                    $this->load->view('includes/header');
+                    $this->load->view('includes/sidebar');
+                    $this->load->view('customer/form_data', $data);
+                    $this->load->view('includes/footer');
+                }
+            }else{
+                $data['title']='Edit';
+                $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('customer/form_data', $data);
+                $this->load->view('includes/footer');
+            }
+        }
+    }
+    public function resetpassword()
+    {
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('login', 'refresh');
+        }else{
+            
+            if($this->input->post()){
+                $this->form_validation->set_rules('customer_password', 'Password', 'trim|required');
+                $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[customer_password]');
+                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+                if($this->form_validation->run() == TRUE){
+                    $details = $this->input->post();
+                    if(isset($details['confirm_password'])){
+                        unset($details['confirm_password']);
+                    }
+                    $details['customer_password'] = md5($details['customer_password']);
+                    $result = $this->customer_model->edit_customer($details);
+                    if ($result) {
+                        $this->session->set_flashdata('add_success', 'Password Changed Succesfully');
+                        redirect('dashboard', 'refresh');
+                    } else {
+                        $this->session->set_flashdata('add_failed', 'Failed to update password');
+                        $data['title']='Reset';
+                        $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                        $this->load->view('includes/header');
+                        $this->load->view('includes/sidebar');
+                        $this->load->view('customer/reset_password', $data);
+                        $this->load->view('includes/footer');
+                    }
+                }else{
+                    $data['title']='Reset';
+                    $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                    $this->load->view('includes/header');
+                    $this->load->view('includes/sidebar');
+                    $this->load->view('customer/reset_password', $data);
+                    $this->load->view('includes/footer');
+                }
+            }else{
+                $data['title']='Reset';
+                $data['customer_details']=$this->customer_model->get_customer_by_id($this->session->userdata('customer_profile_id'));
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('customer/reset_password', $data);
+                $this->load->view('includes/footer');
+            }
+        }
     }
     public function customer_groups() {
         $logged_in = $_SESSION['logged_in'];

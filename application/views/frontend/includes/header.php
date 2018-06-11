@@ -124,7 +124,7 @@
                                                                 </a>
                                                             </li>
                                                             <li class="dropdown active">
-                                                                <a href="javascript:void(0)">
+                                                                <a href="<?php echo base_url(); ?>dashboard">
                                                                     <b>Hi, <?= $this->session->userdata('customer_name')?></b>
                                                                 </a>
                                                             </li>

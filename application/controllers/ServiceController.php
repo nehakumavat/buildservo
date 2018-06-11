@@ -240,7 +240,7 @@ class ServiceController extends CI_Controller {
                     $result = $this->service_model->book_service($details);
                     if ($result) {
                         $this->session->set_flashdata('add_success', 'Your Service is book successfully.');
-                        return redirect('service/service_booking', 'refresh');
+                        return redirect('service/selected_services', 'refresh');
                     } else {
                         $this->session->set_flashdata('add_failed', 'Failed to book service');
                         $data['title']='Add';
@@ -272,7 +272,8 @@ class ServiceController extends CI_Controller {
             
         }
     }
-    public function selected_services() {
+    public function selected_services() 
+    {
             
         if (!$this->session->userdata('logged_in')) {
             $this->session->set_flashdata('access_denied', 'Please login');
@@ -284,5 +285,31 @@ class ServiceController extends CI_Controller {
             $this->load->view('service/selected_service_list', $data);
             $this->load->view('includes/footer');
         }
+    }
+    public function selected_services_view() {
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('home', 'refresh');
+        } else {
+            $get=$this->input->get();
+            
+            $selected_service_details = $this->service_model->get_selected_service_by_id($get['id']);
+            $data['selected_service_detail'] = $selected_service_details;
+            $data['service_detail']=$this->service_model->get_service_by_id($selected_service_details['service_id']);    
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('service/selected_service_view', $data);
+            $this->load->view('includes/footer');
+        }
+    }
+    public function selected_services_cancle() {
+        $post=$this->input->post();
+        $data=array('id'=>$post['id'],
+                    'service_status'=>3
+                );
+        $result=$this->service_model->update_selected_service_status($data);
+        echo $result;
+        
     }
 }

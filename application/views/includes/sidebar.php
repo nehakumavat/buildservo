@@ -72,10 +72,10 @@
                                 <a href="javascript:void(0)"><h3><i class="fa fa-th-large"></i> <span class="nav-label">Profile</span> <span class="fa arrow"></span></h3></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url();?>editprofile"><h3><i class="fa fa-cube"></i> <span class="nav-label">Edit Profile</span></h3></a>
+                                        <a href="<?php echo base_url();?>customer/editprofile"><h3><i class="fa fa-cube"></i> <span class="nav-label">Edit Profile</span></h3></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url();?>resetpassword"><h3><i class="fa fa-cubes"></i> <span class="nav-label">Reset Password</span></h3></a>
+                                        <a href="<?php echo base_url();?>customer/resetpassword"><h3><i class="fa fa-cubes"></i> <span class="nav-label">Reset Password</span></h3></a>
                                     </li>
 
                                 </ul>

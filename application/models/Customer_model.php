@@ -22,7 +22,7 @@ class Customer_model extends CI_Model {
     }
     function edit_customer($data) {
         $this->db->trans_start();
-        $this->db->where('customer_profile_id',$data['id']);
+        $this->db->where('customer_profile_id',$data['customer_profile_id']);
         $this->db->update('tbl_customer_profile', $data);
         $this->db->trans_complete();
         return true;
