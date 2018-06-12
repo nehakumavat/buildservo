@@ -72,6 +72,8 @@ $route['admin']="LoginController/index";
 $route['admin/login']="LoginController/login";
 $route['admin/logout']="LoginController/logout";
 $route['dashboard']="DashboardController/dashboard";
+$route['admin/customers_selected_services']="AdminController/customers_selected_services";
+$route['admin/customer_selected_services_view']="AdminController/customer_selected_services_view";
 
 /*Employee Routes*/
 $route['employee']="EmployeeController/index";

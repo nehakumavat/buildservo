@@ -272,8 +272,7 @@ class ServiceController extends CI_Controller {
             
         }
     }
-    public function selected_services() 
-    {
+    public function selected_services(){
             
         if (!$this->session->userdata('logged_in')) {
             $this->session->set_flashdata('access_denied', 'Please login');
@@ -312,4 +311,5 @@ class ServiceController extends CI_Controller {
         echo $result;
         
     }
+    
 }

@@ -47,3 +47,7 @@ ALTER TABLE `tbl_selected_services` ADD `address` VARCHAR(255) NOT NULL AFTER `s
 ALTER TABLE `tbl_selected_services` ADD `created_at` DATETIME NOT NULL AFTER `pincode`, ADD `updated_at` DATETIME NOT NULL AFTER `created_at`;
 ALTER TABLE `tbl_selected_services` CHANGE `custmore_id` `customer_id` INT(100) NOT NULL;
 ALTER TABLE `tbl_selected_services` ADD `service_id` INT NOT NULL AFTER `customer_id`;
+
+
+
+ALTER TABLE `tbl_selected_services` ADD `employee_id` INT(11) NOT NULL AFTER `service_id`;
