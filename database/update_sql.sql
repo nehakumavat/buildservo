@@ -51,3 +51,49 @@ ALTER TABLE `tbl_selected_services` ADD `service_id` INT NOT NULL AFTER `custome
 
 
 ALTER TABLE `tbl_selected_services` ADD `employee_id` INT(11) NOT NULL AFTER `service_id`;
+
+
+--
+-- Table structure for table `tbl_contact_us`
+--
+
+CREATE TABLE `tbl_contact_us` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `mobile_no` bigint(20) NOT NULL,
+  `email_id` varchar(100) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_contact_us`
+--
+
+INSERT INTO `tbl_contact_us` (`id`, `name`, `mobile_no`, `email_id`, `subject`, `message`, `created_at`) VALUES
+(1, 'Nikhil Vharamble', 987654321, 'niks@gmail.com', 'Subject', 'messages', '2018-06-13 22:01:56'),
+(2, 'Nikhil Vharamble', 987654321, 'niks@gmail.com', 'Subject', 'messages', '2018-06-13 22:02:42');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_contact_us`
+--
+ALTER TABLE `tbl_contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_contact_us`
+--
+ALTER TABLE `tbl_contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

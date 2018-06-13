@@ -41,5 +41,11 @@ class Login_model extends CI_Model {
         }
         
     }
+    public function add_contact($data) {
+        $this->db->trans_start();
+        $this->db->insert('tbl_contact_us', $data);
+        $this->db->trans_complete();
+        return true;
+    }
 
 }

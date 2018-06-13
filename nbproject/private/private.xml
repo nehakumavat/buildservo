@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/buildservo/application/models/Service_model.php</file>
-            <file>file:/var/www/html/buildservo/application/views/admin/selected_service_list.php</file>
+            <file>file:/var/www/html/buildservo/application/views/frontend/login.php</file>
+            <file>file:/var/www/html/buildservo/application/views/frontend/register.php</file>
             <file>file:/var/www/html/buildservo/application/config/routes.php</file>
-            <file>file:/var/www/html/buildservo/application/views/service/selected_service_view.php</file>
-            <file>file:/var/www/html/buildservo/application/controllers/ServiceController.php</file>
-            <file>file:/var/www/html/buildservo/application/controllers/AdminController.php</file>
-            <file>file:/var/www/html/buildservo/application/views/service/book_service_form.php</file>
+            <file>file:/var/www/html/buildservo/application/models/Login_model.php</file>
             <file>file:/var/www/html/buildservo/database/update_sql.sql</file>
-            <file>file:/var/www/html/buildservo/application/views/admin/selected_service_view.php</file>
+            <file>file:/var/www/html/buildservo/application/controllers/HomeController.php</file>
+            <file>file:/var/www/html/buildservo/application/views/frontend/contact-us.php</file>
         </group>
     </open-files>
 </project-private>

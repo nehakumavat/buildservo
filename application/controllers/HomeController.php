@@ -152,9 +152,37 @@ class HomeController extends CI_Controller {
     }
 
     public function contact_us() {
-        $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/contact-us');
-        $this->load->view('frontend/includes/footer');
+        if($this->input->post()){
+            $this->form_validation->set_rules('name', 'Your Name', 'trim|required');
+            $this->form_validation->set_rules('mobile_no', 'Mobile Number', 'trim|required|numeric|regex_match[/^[0-9]{10}$/]');
+            $this->form_validation->set_rules('email_id','E-mail', 'required');
+            $this->form_validation->set_rules('subject', 'Subject', 'trim|required');
+            $this->form_validation->set_rules('message', 'Message', 'trim|required');
+            $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+            if($this->form_validation->run() == TRUE){
+                $details = $this->input->post();
+                $details['created_at'] = date('Y-m-d H:i:s');
+                $result = $this->login_model->add_contact($details);
+                if ($result){
+                    $this->session->set_flashdata('Message', 'Your feedback has been sent successfully');
+                    return redirect('contact-us', 'refresh');
+                } else {
+                    $this->session->set_flashdata('Error', 'Failed to sent feedback');
+                    $this->load->view('frontend/includes/header');
+                    $this->load->view('frontend/contact-us');
+                    $this->load->view('frontend/includes/footer');
+                }
+            }else{
+                $this->load->view('frontend/includes/header');
+                $this->load->view('frontend/contact-us');
+                $this->load->view('frontend/includes/footer');
+            }
+        }else{
+            $this->load->view('frontend/includes/header');
+            $this->load->view('frontend/contact-us');
+            $this->load->view('frontend/includes/footer');
+        }
+        
     }
 
     public function sitemap() {
