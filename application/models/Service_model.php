@@ -44,17 +44,32 @@ class Service_model extends CI_Model {
         return true;
     }
     function get_selected_service() {
-        $query=$this->db->get('tbl_selected_services');
+        
+        $this->db->select('tbl_selected_services.*,tbl_customer_profile.*,tbl_service.name');
+        $this->db->from('tbl_selected_services');
+        $this->db->join('tbl_customer_profile','tbl_customer_profile.customer_profile_id=tbl_selected_services.customer_id');
+        $this->db->join('tbl_service','tbl_service.id=tbl_selected_services.service_id');
+        $this->db->order_by("id", "desc");
+        $query=$this->db->get();
         return $query->result_array();
     }
     function get_selected_service_by_customer_id($customer_id) {
-        $this->db->where('customer_id',$customer_id);
-        $query=$this->db->get('tbl_selected_services');
+        $this->db->select('tbl_selected_services.*,tbl_customer_profile.*,tbl_service.name');
+        $this->db->from('tbl_selected_services');
+        $this->db->join('tbl_customer_profile','tbl_customer_profile.customer_profile_id=tbl_selected_services.customer_id');
+        $this->db->join('tbl_service','tbl_service.id=tbl_selected_services.service_id');
+        $this->db->where('tbl_selected_services.customer_id',$customer_id);
+        $this->db->order_by("id", "desc");
+        $query=$this->db->get();
         return $query->result_array();
     }
     function get_selected_service_by_id($id) {
-        $this->db->where('id',$id);
-        $query=$this->db->get('tbl_selected_services');
+        $this->db->select('tbl_selected_services.*,tbl_customer_profile.*,tbl_service.name');
+        $this->db->from('tbl_selected_services');
+        $this->db->join('tbl_customer_profile','tbl_customer_profile.customer_profile_id=tbl_selected_services.customer_id');
+        $this->db->join('tbl_service','tbl_service.id=tbl_selected_services.service_id');
+        $this->db->where('tbl_selected_services.id',$id);
+        $query=$this->db->get();
         return $query->row_array();
     }
     function update_selected_service_status($data) {

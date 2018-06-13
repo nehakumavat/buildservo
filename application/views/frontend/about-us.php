@@ -65,44 +65,44 @@
 						<h4 class="text-uppercase">Behind the scenes</h4>
 						<ul class="thumbnail-gallery" data-plugin-lightbox data-plugin-options='{"delegate": "a", "type": "image", "gallery": {"enabled": true}}'>
 							<li>
-								<a title="Benefits 1" href="<?php echo base_url();?>assets/frontend/img/benefits/benefits-1.jpg">
+								<a title="Benefits 1" href="<?php echo base_url();?>assets/frontend/img/benefits/behind1.jpg">
 									<span class="thumbnail mb-none">
-										<img src="<?php echo base_url();?>assets/frontend/img/benefits/benefits-1-thumb.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/frontend/img/benefits/behind1-t.jpg" alt="">
 									</span>
 								</a>
 							</li>
 							<li>
-								<a title="Benefits 2" href="<?php echo base_url();?>assets/frontend/img/benefits/benefits-2.jpg">
+								<a title="Benefits 2" href="<?php echo base_url();?>assets/frontend/img/benefits/behind2.png">
 									<span class="thumbnail mb-none">
-										<img src="<?php echo base_url();?>assets/frontend/img/benefits/benefits-2-thumb.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/frontend/img/benefits/behind2-t.png" alt="">
 									</span>
 								</a>
 							</li>
 							<li>
-								<a title="Benefits 3" href="<?php echo base_url();?>assets/frontend/img/benefits/benefits-3.jpg">
+								<a title="Benefits 3" href="<?php echo base_url();?>assets/frontend/img/benefits/behind3.jpg">
 									<span class="thumbnail mb-none">
-										<img src="<?php echo base_url();?>assets/frontend/img/benefits/benefits-3-thumb.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/frontend/img/benefits/behind3-t.jpg" alt="">
 									</span>
 								</a>
 							</li>
 							<li>
-								<a title="Benefits 4" href="<?php echo base_url();?>assets/frontend/img/benefits/benefits-4.jpg">
+								<a title="Benefits 4" href="<?php echo base_url();?>assets/frontend/img/benefits/behind4.jpg">
 									<span class="thumbnail mb-none">
-										<img src="<?php echo base_url();?>assets/frontend/img/benefits/benefits-4-thumb.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/frontend/img/benefits/behind4-t.jpg" alt="">
 									</span>
 								</a>
 							</li>
 							<li>
-								<a title="Benefits 5" href="<?php echo base_url();?>assets/frontend/img/benefits/benefits-5.jpg">
+								<a title="Benefits 5" href="<?php echo base_url();?>assets/frontend/img/benefits/behind5.jpg">
 									<span class="thumbnail mb-none">
-										<img src="<?php echo base_url();?>assets/frontend/img/benefits/benefits-5-thumb.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/frontend/img/benefits/behind5-t.jpg" alt="">
 									</span>
 								</a>
 							</li>
 							<li>
-								<a title="Benefits 6" href="<?php echo base_url();?>assets/frontend/img/benefits/benefits-6.jpg">
+								<a title="Benefits 6" href="<?php echo base_url();?>assets/frontend/img/benefits/6.jpg">
 									<span class="thumbnail mb-none">
-										<img src="<?php echo base_url();?>assets/frontend/img/benefits/benefits-6-thumb.jpg" alt="">
+										<img src="<?php echo base_url();?>assets/frontend/img/benefits/behind6-t.jpg" alt="">
 									</span>
 								</a>
 							</li>
@@ -131,7 +131,7 @@
 						<span class="thumb-info thumb-info-hide-wrapper-bg">
 							<span class="thumb-info-wrapper">
 								<a href="about-me.html">
-									<img src="<?php echo base_url();?>assets/frontend/img/team/team-1.jpg" class="img-responsive" alt="">
+									<img src="<?php echo base_url();?>assets/frontend/img/team/1.png" class="img-responsive" alt="">
 									<span class="thumb-info-title">
 										<span class="thumb-info-inner">John Doe</span>
 										<span class="thumb-info-type">CEO</span>
@@ -152,7 +152,7 @@
 						<span class="thumb-info thumb-info-hide-wrapper-bg">
 							<span class="thumb-info-wrapper">
 								<a href="about-me.html">
-									<img src="<?php echo base_url();?>assets/frontend/img/team/team-2.jpg" class="img-responsive" alt="">
+									<img src="<?php echo base_url();?>assets/frontend/img/team/2.png" class="img-responsive" alt="">
 									<span class="thumb-info-title">
 										<span class="thumb-info-inner">Jessica Doe</span>
 										<span class="thumb-info-type">Marketing</span>
@@ -173,7 +173,7 @@
 						<span class="thumb-info thumb-info-hide-wrapper-bg">
 							<span class="thumb-info-wrapper">
 								<a href="about-me.html">
-									<img src="<?php echo base_url();?>assets/frontend/img/team/team-3.jpg" class="img-responsive" alt="">
+									<img src="<?php echo base_url();?>assets/frontend/img/team/3.png" class="img-responsive" alt="">
 									<span class="thumb-info-title">
 										<span class="thumb-info-inner">Rick Edward Doe</span>
 										<span class="thumb-info-type">Developer</span>
@@ -194,7 +194,7 @@
 						<span class="thumb-info thumb-info-hide-wrapper-bg">
 							<span class="thumb-info-wrapper">
 								<a href="about-me.html">
-									<img src="<?php echo base_url();?>assets/frontend/img/team/team-4.jpg" class="img-responsive" alt="">
+									<img src="<?php echo base_url();?>assets/frontend/img/team/4.png" class="img-responsive" alt="">
 									<span class="thumb-info-title">
 										<span class="thumb-info-inner">Melinda Wolosky</span>
 										<span class="thumb-info-type">Design</span>

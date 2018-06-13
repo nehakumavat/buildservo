@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2018 at 10:08 AM
+-- Generation Time: Jun 13, 2018 at 10:43 AM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.2.1-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -109,7 +109,8 @@ CREATE TABLE `tbl_customer_profile` (
 INSERT INTO `tbl_customer_profile` (`customer_profile_id`, `customer_name`, `customer_address`, `customer_city`, `customer_pincode`, `customer_mob`, `customer_email`, `customer_password`, `is_active`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (2, 'Akshay', 'pune', 'pune', 411037, 7709975028, 'a@g.c', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-06-04 10:50:33', '2018-06-04 10:50:33'),
 (3, 'xyz', 'pune', 'pune', 411069, 3214567890, 'xyz@g.c', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, '2018-06-04 11:16:52', '2018-06-04 11:16:52'),
-(4, 'Akki Tambekar', 'kalamba', 'kolhapur', 416007, 7709975028, 'akki@gmail.com', '2de1b2d6a6738df78c5f9733853bd170', 1, 0, '2018-06-05 11:17:44', '2018-06-10 18:52:20');
+(4, 'Akki Tambekar', 'kalamba', 'kolhapur', 416007, 7709975028, 'akki@gmail.com', '2de1b2d6a6738df78c5f9733853bd170', 1, 0, '2018-06-05 11:17:44', '2018-06-10 18:52:20'),
+(5, 'Nikhil Vharamble', 'Kolhapur', 'kolhapur', 413512, 987654321, 'niks@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-06-12 22:19:39', '2018-06-12 22:19:39');
 
 -- --------------------------------------------------------
 
@@ -182,6 +183,7 @@ CREATE TABLE `tbl_selected_services` (
   `id` bigint(20) NOT NULL,
   `customer_id` int(100) NOT NULL,
   `service_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
   `booking_date` datetime NOT NULL,
   `service_status` int(15) NOT NULL COMMENT 'Pending=1,Confirmed=2,Cancelled=3,In progress=4,Completed=5',
   `address` varchar(255) NOT NULL,
@@ -195,10 +197,13 @@ CREATE TABLE `tbl_selected_services` (
 -- Dumping data for table `tbl_selected_services`
 --
 
-INSERT INTO `tbl_selected_services` (`id`, `customer_id`, `service_id`, `booking_date`, `service_status`, `address`, `city`, `pincode`, `created_at`, `updated_at`) VALUES
-(6, 4, 3, '2018-06-15 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-08 18:18:57', '2018-06-08 18:18:57'),
-(7, 4, 5, '2018-06-22 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-08 18:19:11', '2018-06-08 18:19:11'),
-(8, 4, 9, '2018-06-14 00:00:00', 1, 'pune', 'pune', 411068, '2018-06-10 17:23:17', '2018-06-10 17:23:17');
+INSERT INTO `tbl_selected_services` (`id`, `customer_id`, `service_id`, `employee_id`, `booking_date`, `service_status`, `address`, `city`, `pincode`, `created_at`, `updated_at`) VALUES
+(6, 4, 3, 0, '2018-06-15 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-08 18:18:57', '2018-06-08 18:18:57'),
+(7, 4, 5, 0, '2018-06-22 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-08 18:19:11', '2018-06-08 18:19:11'),
+(8, 4, 9, 1, '2018-06-14 00:00:00', 3, 'pune', 'pune', 411068, '2018-06-10 17:23:17', '2018-06-12 22:17:29'),
+(9, 5, 1, 2, '2018-06-16 00:00:00', 2, 'Kolhapur', 'Kolhapur', 413512, '2018-06-12 22:26:42', '2018-06-12 22:30:32'),
+(10, 5, 8, 0, '2018-06-20 00:00:00', 1, 'Kolhapur', 'Kolhapur', 413512, '2018-06-12 22:39:44', '2018-06-12 22:39:44'),
+(11, 5, 4, 1, '2018-06-14 00:00:00', 3, 'Kolhapur', 'Kolhapur', 413512, '2018-06-13 10:25:00', '2018-06-13 10:25:26');
 
 -- --------------------------------------------------------
 
@@ -320,7 +325,7 @@ ALTER TABLE `tbl_company_signup`
 -- AUTO_INCREMENT for table `tbl_customer_profile`
 --
 ALTER TABLE `tbl_customer_profile`
-  MODIFY `customer_profile_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `customer_profile_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_designation`
 --
@@ -340,7 +345,7 @@ ALTER TABLE `tbl_list_area`
 -- AUTO_INCREMENT for table `tbl_selected_services`
 --
 ALTER TABLE `tbl_selected_services`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_service`
 --

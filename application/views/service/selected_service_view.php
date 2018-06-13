@@ -62,18 +62,18 @@
                         </div>
                     </div>
                     <div class="form-group row m-b-25">
-                        <div class="col-md-2">
+                        <div class="col-md-6">
                             <h4 for="city">City</h4>
                             <p><?= $selected_service_detail['city'] ?></p>
 
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-6">
                             <h4 for="address">Pincode</h4>
                             <p><?= $selected_service_detail['pincode'] ?></p>
                         </div>
                     </div>
                     <div class="form-group row m-b-25">
-                        <div class="col-md-2">
+                        <div class="col-md-6">
                             <h4 for="city">Booking Status</h4>
                             <p><?php 
                                     if($selected_service_detail['service_status']==1){
@@ -90,6 +90,17 @@
                                 ?>
                             </p>
                         </div>
+                        <?php if(($selected_service_detail['service_status']!=1 || $selected_service_detail['service_status']!=3) && !empty($selected_service_detail['employee_id'])){ ?>
+                            <div class="col-md-6">
+                                <h4 for="employee_id">Assign Employee</h4>
+                                <p>
+                                    <?php 
+                                        $result=$this->employee_model->get_employee_by_id($selected_service_detail['employee_id']);
+                                        echo $result['name'];
+                                    ?>
+                                </p>
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="form-group row m-b-25">
                         <div class="col-md-4">

@@ -73,7 +73,7 @@
                         <?php if(!empty($selected_service_detail['id'])){ ?>
                                 <input type="hidden" name="id" value="<?= $selected_service_detail['id']?$selected_service_detail['id']:''?>">
                         <?php } ?>
-                        <button type="submit" class="btn btn-primary">Book Service</button>
+                        <button type="button" class="btn btn-primary" id="book_service">Book Service</button>
                     </form>
 
                 </div>
@@ -81,5 +81,28 @@
         </div>
     </div>
 </div>
+<div class="modal fade delete-popup" id="bookingConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="text-center popup-content">  
+                    <h3> By clicking on <span>"YES"</span>, your service will be book. Do you wish to proceed?</h3><br>
+                    <button type="button" id="confirm_btn" class="btn btn-success modal-box-button" >Yes</button>
+                    <button type="button" class="btn btn-danger modal-box-button" data-dismiss="modal"  >No</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+<script> 
+    $("#book_service").on('click',function(){
+        $('#bookingConfirmationModal').modal('show');
+    });
+    $("#confirm_btn").on('click',function(){
+        $('form').submit(); 
+    });
+    
+</script>
 
     

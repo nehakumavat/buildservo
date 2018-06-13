@@ -63,14 +63,34 @@ class AdminController extends CI_Controller {
             redirect('admin', 'refresh');
         } else {
             $get=$this->input->get();
-            $selected_service_details = $this->service_model->get_selected_service_by_id($get['id']);
-            $data['selected_service_detail'] = $selected_service_details;
-            $data['service_detail']=$this->service_model->get_service_by_id($selected_service_details['service_id']);    
-            $data['employee_list']=$this->employee_model->get_employee();    
-            $this->load->view('includes/header');
-            $this->load->view('includes/sidebar');
-            $this->load->view('admin/selected_service_view', $data);
-            $this->load->view('includes/footer');
+            if($this->input->post()){
+                $details = $this->input->post();
+                $details['updated_at'] = date('Y-m-d H:i:s');
+                $result = $this->service_model->update_selected_service_status($details);
+                if ($result) {
+                    $this->session->set_flashdata('add_success', 'Selected Service updated Succesfully');
+                    return redirect('admin/customers_selected_services', 'refresh');
+                } else {
+                    $this->session->set_flashdata('add_failed', 'Failed to update');
+                    $selected_service_details = $this->service_model->get_selected_service_by_id($details['id']);
+                    $data['selected_service_detail'] = $selected_service_details;
+                    $data['service_detail']=$this->service_model->get_service_by_id($selected_service_details['service_id']);    
+                    $data['employee_list']=$this->employee_model->get_employee();    
+                    $this->load->view('includes/header');
+                    $this->load->view('includes/sidebar');
+                    $this->load->view('admin/selected_service_view', $data);
+                    $this->load->view('includes/footer');
+                }
+            }else{
+                $selected_service_details = $this->service_model->get_selected_service_by_id($get['id']);
+                $data['selected_service_detail'] = $selected_service_details;
+                $data['service_detail']=$this->service_model->get_service_by_id($selected_service_details['service_id']);    
+                $data['employee_list']=$this->employee_model->get_employee();    
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('admin/selected_service_view', $data);
+                $this->load->view('includes/footer');
+            }
         }
     }
 }

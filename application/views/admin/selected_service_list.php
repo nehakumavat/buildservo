@@ -31,17 +31,21 @@
                                         foreach ($selected_service_list as $key => $value) {
                                 ?>
                                     <div class="row list-group-item">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <p>Service</p>
                                             <a href="<?= base_url()?>service/selected_services_view?id=<?= $value['id'] ?>">
                                                 <h4 class="">
-                                                    <?php 
-                                                        $service_detail=$this->service_model->get_service_by_id($value['service_id']);
-                                                        echo $service_detail['name']; 
-                                                    ?>
+                                                    <?= $value['name'];?>
                                                 </h4>
                                             </a>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <p>Customer name</p>
+                                            <h4 class="">
+                                                <?php echo $value['customer_name']; ?>
+                                            </h4>
+                                        </div>
+                                        <div class="col-md-3">
                                             <p>Booking Date</p>
                                             <h4 class="">
                                                 <?php 
@@ -50,7 +54,7 @@
                                                 ?>
                                             </h4>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <p for="city">Booking Status</p>
                                             <h4><?php 
                                                     if($value['service_status']==1){

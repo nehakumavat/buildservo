@@ -16,7 +16,7 @@
         </ol>
     </div>
     <div class="col-lg-3">
-        <a href="<?= base_url()?>service/selected_services" class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-backward" aria-hidden="true"></i>  Your Service List</a>
+        <a href="<?= base_url()?>admin/customers_selected_services" class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-backward" aria-hidden="true"></i>  Your Service List</a>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -35,83 +35,92 @@
                     </div>-->
                 </div>
                 <div class="ibox-content">
-                    
-                    <div class="form-group row m-b-25">
-                        <div class="col-md-6">
-                            <h4 for="name">Service Name</h4>
-                            <p><?= $service_detail['name']?></p>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 for="booking_date">Booking Date</h4>
-                            <p>
-                                <?php $date= date_create($selected_service_detail['booking_date']);
-                                    echo date_format($date,"d/m/Y");
-                                ?>
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group row m-b-25">
-                        <div class="col-md-12">
-                            <h4 for="address">Address</h4>
-                            <p><?= $selected_service_detail['address'] ?></p>
-
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-25">
-                        <div class="col-md-2">
-                            <h4 for="city">City</h4>
-                            <p><?= $selected_service_detail['city'] ?></p>
-
-                        </div>
-                        <div class="col-md-2">
-                            <h4 for="address">Pincode</h4>
-                            <p><?= $selected_service_detail['pincode'] ?></p>
-                        </div>
-                    </div>
-                    <div class="form-group row m-b-25">
-                        <div class="col-md-6">
-                            <h4 for="employee_id">Assign Employee</h4>
-                            <select class="form-control" name="employee_id" id="employee_id">
-                                <option disabled="disabled" selected="selected">Select employee_id</option>
-                                <?php foreach($employee_list as $employee){ 
-                                            if($employee['id']==$selected_service_detail['employee_id']){
-                                                $selected='selected="selected"';
-                                            }else{
-                                                $selected='';
-                                            }
-                                ?>  
-                                <option value="<?= $employee['id']?>" <?= $selected;?>><?= $employee['name']?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 for="city">Booking Status</h4>
-                            <select class="form-control" name="booking_status" id="booking_status">
-                                <option disabled="disabled" selected="selected">Select Booking Status</option>
-                                <option value="1" <?= $selected_service_detail['service_status']==1?'selected="selected"':''; ?> data-status_name="Pending" >Pending</option>
-                                <option value="2" <?= $selected_service_detail['service_status']==2?'selected="selected"':'';?> data-status_name="Confirmed" >Confirmed</option>
-                                <option value="3" <?= $selected_service_detail['service_status']==3?'selected="selected"':'';?> data-status_name="Cancelled" >Cancelled</option>
-                                <option value="4" <?= $selected_service_detail['service_status']==4?'selected="selected"':'';?> data-status_name="In progress" >In progress</option>
-                                <option value="5" <?= $selected_service_detail['service_status']==5?'selected="selected"':'';?> data-status_name="Completed" >Completed</option>
-                                
-                            </select>
+                    <?php echo validation_errors('<div class="error">', '</div>'); ?>
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        <div class="form-group row m-b-25">
+                            <div class="col-md-6">
+                                <h4 for="name">Service Name</h4>
+                                <p><?= $service_detail['name']?></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 for="name">Customer Name</h4>
+                                <p><?= $selected_service_detail['customer_name']?></p>
+                            </div>
                             
                         </div>
-                    </div>
-                    <div class="form-group row m-b-25">
-                        
-                    </div>
-                    <div class="form-group row m-b-25">
-                        <div class="col-md-4">
+
+                        <div class="form-group row m-b-25">
+                            <div class="col-md-6">
+                                <h4 for="address">Address</h4>
+                                <p><?= $selected_service_detail['address'] ?></p>
+
+                            </div>
+                            <div class="col-md-6">
+                                <h4 for="booking_date">Booking Date</h4>
+                                <p>
+                                    <?php $date= date_create($selected_service_detail['booking_date']);
+                                        echo date_format($date,"d/m/Y");
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-25">
+                            <div class="col-md-6">
+                                <h4 for="city">City</h4>
+                                <p><?= $selected_service_detail['city'] ?></p>
+
+                            </div>
+                            <div class="col-md-6">
+                                <h4 for="address">Pincode</h4>
+                                <p><?= $selected_service_detail['pincode'] ?></p>
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-25">
+                            <div class="col-md-6">
+                                <h4 for="employee_id">Assign Employee</h4>
+                                <select class="form-control" name="employee_id" id="employee_id">
+                                    <option disabled="disabled" selected="selected">Select employee_id</option>
+                                    <?php foreach($employee_list as $employee){ 
+                                                if($employee['id']==$selected_service_detail['employee_id']){
+                                                    $selected='selected="selected"';
+                                                }else{
+                                                    $selected='';
+                                                }
+                                    ?>  
+                                    <option value="<?= $employee['id']?>" <?= $selected;?>><?= $employee['name']?></option>
+                                    <?php } ?>
+                                </select>
+                                <div class="error"><?php echo form_error('employee_id'); ?></div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 for="city">Booking Status</h4>
+                                <?php if($selected_service_detail['service_status']==3) { ?>
+                                        <p>Booking Cancelled</p>
+                                <?php }else{ ?>
+                                    <select class="form-control" name="service_status" id="service_status">
+                                        <option disabled="disabled" selected="selected">Select Booking Status</option>
+                                        <option value="1" <?= $selected_service_detail['service_status']==1?'selected="selected"':''; ?> data-status_name="Pending" >Pending</option>
+                                        <option value="2" <?= $selected_service_detail['service_status']==2?'selected="selected"':'';?> data-status_name="Confirmed" >Confirmed</option>
+                                        <option value="3" <?= $selected_service_detail['service_status']==3?'selected="selected"':'';?> data-status_name="Cancelled" >Cancelled</option>
+                                        <option value="4" <?= $selected_service_detail['service_status']==4?'selected="selected"':'';?> data-status_name="In progress" >In progress</option>
+                                        <option value="5" <?= $selected_service_detail['service_status']==5?'selected="selected"':'';?> data-status_name="Completed" >Completed</option>
+                                    </select>
+                                    <div class="error"><?php echo form_error('service_status'); ?></div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="form-group row m-b-25"></div>
+                        <div class="form-group row m-b-25">
                             <?php if($selected_service_detail['service_status']!=3){ ?>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                     <a href="javascript:void(0)" data-id="<?= $selected_service_detail['id'] ?>" class="btn btn-danger" name="selected_service_cancle" id="selected_service_cancle">Cancle Booking</a>
+                                </div>
                             <?php } ?>            
                         </div>
-                    </div>
-                    <input type="hidden" id="customer_id_hidden" value="<?= $selected_service_detail['customer_id'] ?>">
-                    <input type="hidden" id="id_hidden" value="<?= $selected_service_detail['id'] ?>">
+                        <input type="hidden" id="customer_id" value="<?= $selected_service_detail['customer_id'] ?>" name="customer_id">
+                        <input type="hidden" id="id" value="<?= $selected_service_detail['id'] ?>" name="id">
+                    </form>    
                 </div>
             </div>
         </div>

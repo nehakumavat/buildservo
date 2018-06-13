@@ -292,7 +292,6 @@ class ServiceController extends CI_Controller {
             redirect('home', 'refresh');
         } else {
             $get=$this->input->get();
-            
             $selected_service_details = $this->service_model->get_selected_service_by_id($get['id']);
             $data['selected_service_detail'] = $selected_service_details;
             $data['service_detail']=$this->service_model->get_service_by_id($selected_service_details['service_id']);    

@@ -3,7 +3,7 @@
 		<div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 800, "gridheight": 760}'>
 			<ul>
 				<li data-transition="fade">
-					<img src="<?php echo base_url();?>assets/frontend/img/slides/slide-bg-full-3-dark.jpg"  
+					<img src="<?php echo base_url();?>assets/frontend/img/slides/banner1.jpg"  
 					alt=""
 					data-bgposition="center center" 
 					data-bgfit="cover" 
@@ -76,7 +76,7 @@
 
 				</li>
 				<li data-transition="fade">
-					<img src="<?php echo base_url();?>assets/frontend/img/slides/slide-bg-full-4-dark.jpg"  
+					<img src="<?php echo base_url();?>assets/frontend/img/slides/banner3.jpg"  
 					alt=""
 					data-bgposition="center center" 
 					data-bgfit="cover" 
@@ -278,7 +278,7 @@
 								<a class="btn btn-secondary mt-lg mb-sm" href="<?php echo base_url();?>about-us">View More</a>
 							</div>
 							<div class="col-md-4 col-md-offset-1">
-								<img class="img-responsive appear-animation" src="<?php echo base_url();?>assets/frontend/img/porto-preview-1.jpg" alt="" data-appear-animation="fadeInUp">
+								<img class="img-responsive appear-animation" src="<?php echo base_url();?>assets/frontend/img/worker2.png" alt="" data-appear-animation="fadeInUp">
 							</div>
 						</div>
 					</div>
@@ -353,59 +353,30 @@
 							<div class="col-md-3 col-sm-6">
 								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600">
 									<i class="fa fa-desktop"></i>
-									<strong data-to="17">0</strong>
-									<label>Premade HomePages</label>
+									<strong data-to="10" data-append="+">0</strong>
+									<label>Services</label>
 									<p class="text-color-primary mb-xl">Many more to come</p>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="900">
 									<i class="fa fa-ticket"></i>
-									<strong data-to="2500" data-append="+">0</strong>
-									<label>Answered Tickets</label>
+									<strong data-to="10" data-append="+">0</strong>
+									<label>Employees</label>
 									<p class="text-color-primary mb-xl">Satisfaction guaranteed</p>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6">
 								<div class="counter appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="1200">
 									<i class="fa fa-clock-o"></i>
-									<strong data-to="3000" data-append="+">0</strong>
-									<label>Development Hours</label>
-									<p class="text-color-primary mb-xl">Available to you for only $16</p>
+									<strong data-to="2536" data-append="+">0</strong>
+									<label>Working Hours</label>
+									<p class="text-color-primary mb-xl">Available to you at vary low cost</p>
 								</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<div class="container">
-					<div class="row center mt-xl">
-						<div class="owl-carousel owl-theme" data-plugin-options='{"items": 6, "autoplay": true, "autoplayTimeout": 3000}'>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-1.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-2.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-3.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-4.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-5.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-6.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-4.png" alt="">
-							</div>
-							<div>
-								<img class="img-responsive" src="<?php echo base_url();?>assets/frontend/img/logos/logo-2.png" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
