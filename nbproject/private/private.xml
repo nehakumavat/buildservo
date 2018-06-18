@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/buildservo/application/views/frontend/login.php</file>
-            <file>file:/var/www/html/buildservo/application/views/frontend/register.php</file>
+            <file>file:/var/www/html/buildservo/application/models/Admin_model.php</file>
+            <file>file:/var/www/html/buildservo/application/models/Employee_model.php</file>
+            <file>file:/var/www/html/buildservo/application/views/admin/list_contact_us.php</file>
+            <file>file:/var/www/html/buildservo/application/controllers/EmployeeController.php</file>
             <file>file:/var/www/html/buildservo/application/config/routes.php</file>
-            <file>file:/var/www/html/buildservo/application/models/Login_model.php</file>
+            <file>file:/var/www/html/buildservo/application/controllers/AdminController.php</file>
+            <file>file:/var/www/html/buildservo/application/views/includes/sidebar.php</file>
             <file>file:/var/www/html/buildservo/database/update_sql.sql</file>
-            <file>file:/var/www/html/buildservo/application/controllers/HomeController.php</file>
-            <file>file:/var/www/html/buildservo/application/views/frontend/contact-us.php</file>
         </group>
     </open-files>
 </project-private>

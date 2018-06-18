@@ -59,7 +59,7 @@
                             <a href="javascript:void(0)"><h3><i class="fa fa-cube"></i> <span class="nav-label">Customer Feedback</span></h3></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)"><h3><i class="fa fa-cube"></i> <span class="nav-label">Contact us</span></h3></a>
+                            <a href="<?php echo base_url();?>admin/contact_us"><h3><i class="fa fa-cube"></i> <span class="nav-label">Contact us</span></h3></a>
                         </li>
                     <?php }else{ ?>
                             <li>

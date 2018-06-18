@@ -25,6 +25,7 @@ class AdminController extends CI_Controller {
         $this->load->model('employee_model');
         $this->load->model('service_model');
         $this->load->model('designation_model');
+        $this->load->model('admin_model');
         
     }
     
@@ -92,5 +93,41 @@ class AdminController extends CI_Controller {
                 $this->load->view('includes/footer');
             }
         }
+    }
+    public function contact_us(){
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('admin', 'refresh');
+        } else {
+            $data['contact_list'] = $this->admin_model->get_contact();
+            //pr($data);die;
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('admin/list_contact_us', $data);
+            $this->load->view('includes/footer');
+        }
+    }
+    public function contact_delete()
+    {   
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('LoginController/index', 'refresh');
+        } else {
+            $get=$this->input->get();
+            if(!empty($get)){
+                $result=$this->admin_model->delete_contact($get['id']);
+                if($result){
+                    $this->session->set_flashdata('add_success', 'Contact  Deleted Succesfully');
+                    return redirect('admin/contact_us', 'refresh');
+                }else{
+                    $this->session->set_flashdata('add_failed', 'Contact cannot deleted');
+                    return redirect('admin/contact_us', 'refresh');
+                }
+            }else{
+                return redirect('admin/contact_us', 'refresh');
+            }
+        }
+        
     }
 }
