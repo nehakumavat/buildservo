@@ -79,7 +79,7 @@
                             <div class="col-md-6">
                                 <h4 for="employee_id">Assign Employee</h4>
                                 <select class="form-control" name="employee_id" id="employee_id">
-                                    <option disabled="disabled" selected="selected">Select employee_id</option>
+                                    <option disabled="disabled" selected="selected">Select Employee Name</option>
                                     <?php foreach($employee_list as $employee){ 
                                                 if($employee['id']==$selected_service_detail['employee_id']){
                                                     $selected='selected="selected"';

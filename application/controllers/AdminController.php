@@ -130,4 +130,17 @@ class AdminController extends CI_Controller {
         }
         
     }
+    public function feedback(){
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('admin', 'refresh');
+        } else {
+            $data['feedback_list'] = $this->admin_model->get_feedback();
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('admin/list_feedback', $data);
+            $this->load->view('includes/footer');
+        }
+    }
 }

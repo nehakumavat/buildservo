@@ -22,6 +22,8 @@ class CustomerController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('customer_model');
+        $this->load->model('admin_model');
+        $this->load->model('employee_model');
     }
     public function index() 
     {
@@ -314,6 +316,67 @@ class CustomerController extends CI_Controller {
                 return redirect('customers', 'refresh');
             }
         }
+    }
+    public function feedback(){
+            
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('LoginController/index', 'refresh');
+        } else {
+            $data['feedback_list'] = $this->admin_model->get_feedback_customer_id($this->session->userdata('customer_profile_id'));
+            $this->load->view('includes/header');
+            $this->load->view('includes/sidebar');
+            $this->load->view('admin/list_feedback', $data);
+            $this->load->view('includes/footer');
+        }
+    }
+    public function add_feedback()
+    {
+        if (!$this->session->userdata('logged_in')) {
+            $this->session->set_flashdata('access_denied', 'Please login');
+            redirect('LoginController/index', 'refresh');
+        } else {
+            if($this->input->post()){
+                $this->form_validation->set_rules('subject', 'Subject', 'trim|required');
+                $this->form_validation->set_rules('comment', 'Comment', 'trim|required');
+                $this->form_validation->set_rules('rating','Rating', 'required');
+                $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+                if($this->form_validation->run() == TRUE){
+                    $details = $this->input->post();
+                    $details['created_at'] = date('Y-m-d H:i:s');
+                    $details['customer_id'] = $this->session->userdata('customer_profile_id');
+                    $result = $this->admin_model->add_feedback($details);
+                    if ($result) {
+                        $this->session->set_flashdata('add_success', 'Feedback has been sent successfully');
+                        return redirect('customer/feedback', 'refresh');
+                    } else {
+                        $this->session->set_flashdata('add_failed', 'Something went wrong');
+                        $data['employee_list']=$this->employee_model->get_employee();
+                        $data['title']='Add';
+                        $this->load->view('includes/header');
+                        $this->load->view('includes/sidebar');
+                        $this->load->view('customer/form_data_feedback', $data);
+                        $this->load->view('includes/footer');
+                    }
+                }else{
+                    $data['employee_list']=$this->employee_model->get_employee();
+                    $data['title']='Add';
+                    $this->load->view('includes/header');
+                    $this->load->view('includes/sidebar');
+                    $this->load->view('customer/form_data_feedback', $data);
+                    $this->load->view('includes/footer');
+                }
+            }else{
+                $data['employee_list']=$this->employee_model->get_employee();
+                $data['title']='Add';
+                $this->load->view('includes/header');
+                $this->load->view('includes/sidebar');
+                $this->load->view('customer/form_data_feedback', $data);
+                $this->load->view('includes/footer');
+            }
+            
+        }
+        
     }
 
 }
