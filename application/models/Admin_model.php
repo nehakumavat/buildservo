@@ -54,5 +54,29 @@ class Admin_model extends CI_Model {
         return true;
         
     }
+    public function get_feedback() {
+        $this->db->select('f.*,e.*,c.*');
+        $this->db->from('tbl_feedback f');
+        $this->db->join('tbl_employee e','e.id=f.employee_id');
+        $this->db->join('tbl_customer_profile c','c.customer_profile_id=f.customer_id');
+        $this->db->order_by("feedback_id", "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function get_feedback_customer_id($customer_id) {
+        $this->db->select('f.*,e.*');
+        $this->db->from('tbl_feedback f');
+        $this->db->join('tbl_employee e','e.id=f.employee_id');
+        $this->db->where('f.customer_id',$customer_id);
+        $this->db->order_by("feedback_id", "desc");
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    function add_feedback($data) {
+        $this->db->trans_start();
+        $this->db->insert('tbl_feedback', $data);
+        $this->db->trans_complete();
+        return true;
+    }
 
 }

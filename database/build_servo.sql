@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 13, 2018 at 10:43 AM
+-- Generation Time: Jun 19, 2018 at 04:23 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.2.1-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -62,11 +62,21 @@ CREATE TABLE `tbl_company_signup` (
 --
 
 CREATE TABLE `tbl_contact_us` (
-  `full_name` text NOT NULL,
-  `mobile_no` int(100) NOT NULL,
-  `Requiement_detail` int(100) NOT NULL,
-  `email_id` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `mobile_no` bigint(20) NOT NULL,
+  `email_id` varchar(100) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_contact_us`
+--
+
+INSERT INTO `tbl_contact_us` (`id`, `name`, `mobile_no`, `email_id`, `subject`, `message`, `created_at`) VALUES
+(2, 'Nikhil Vharamble', 987654321, 'niks@gmail.com', 'Subject', 'messages', '2018-06-13 22:02:42');
 
 -- --------------------------------------------------------
 
@@ -159,6 +169,29 @@ INSERT INTO `tbl_employee` (`id`, `name`, `email_id`, `mobile_no`, `address`, `d
 (1, 'Akshay', 'akshay@gmail.com', 2147483647, 'pune', 1, 'best-poker-hands3.png', 0, '2018-05-30 19:38:19', '2018-05-30 19:38:19'),
 (2, 'abc', 'abc@gmail.com', 1234567890, 'pune', 1, 'India-licensed-poker-website2.png', 0, '2018-05-30 19:50:35', '2018-06-01 16:37:50'),
 (4, 'xyz', 'xyz@g.c', 2147483647, 'pune', 2, 'poker-hands.png', 1, '2018-05-30 19:56:22', '2018-05-30 19:56:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_feedback`
+--
+
+CREATE TABLE `tbl_feedback` (
+  `feedback_id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
+  `rating` int(5) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_feedback`
+--
+
+INSERT INTO `tbl_feedback` (`feedback_id`, `subject`, `comment`, `rating`, `customer_id`, `employee_id`, `created_at`) VALUES
+(1, 'Subject', 'Comment', 2, 5, 2, '2018-06-19 15:08:17');
 
 -- --------------------------------------------------------
 
@@ -266,6 +299,12 @@ ALTER TABLE `tbl_company_signup`
   ADD PRIMARY KEY (`company_id`);
 
 --
+-- Indexes for table `tbl_contact_us`
+--
+ALTER TABLE `tbl_contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_customer_profile`
 --
 ALTER TABLE `tbl_customer_profile`
@@ -282,6 +321,12 @@ ALTER TABLE `tbl_designation`
 --
 ALTER TABLE `tbl_employee`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_feedback`
+--
+ALTER TABLE `tbl_feedback`
+  ADD PRIMARY KEY (`feedback_id`);
 
 --
 -- Indexes for table `tbl_list_area`
@@ -322,6 +367,11 @@ ALTER TABLE `tbl_admin`
 ALTER TABLE `tbl_company_signup`
   MODIFY `company_id` int(100) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tbl_contact_us`
+--
+ALTER TABLE `tbl_contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `tbl_customer_profile`
 --
 ALTER TABLE `tbl_customer_profile`
@@ -336,6 +386,11 @@ ALTER TABLE `tbl_designation`
 --
 ALTER TABLE `tbl_employee`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tbl_feedback`
+--
+ALTER TABLE `tbl_feedback`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_list_area`
 --

@@ -10,6 +10,8 @@ class HomeController extends CI_Controller {
         $this->load->model('employee_model');
         $this->load->model('designation_model');
         $this->load->model('login_model');
+        $this->load->model('service_model');
+        $this->load->model('admin_model');
     }
 
     public function login() {
@@ -110,8 +112,12 @@ class HomeController extends CI_Controller {
         
     }
     public function home() {
+        $data['service_list']=$this->service_model->get_service();
+        $data['feedback_list']=$this->admin_model->get_feedback();
+        $data['employee_list']=$this->employee_model->get_employee();
+        $data['customer_list']=$this->customer_model->get_customer();
         $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/home');
+        $this->load->view('frontend/home',$data);
         $this->load->view('frontend/includes/footer');
     }
 

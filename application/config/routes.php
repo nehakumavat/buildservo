@@ -76,6 +76,7 @@ $route['admin/customers_selected_services']="AdminController/customers_selected_
 $route['admin/customer_selected_services_view']="AdminController/customer_selected_services_view";
 $route['admin/contact_us']="AdminController/contact_us";
 $route['admin/contact_delete']="AdminController/contact_delete";
+$route['admin/feedback']="AdminController/feedback";
 
 /*Employee Routes*/
 $route['employee']="EmployeeController/index";
@@ -107,6 +108,8 @@ $route['customer/add']="CustomerController/add_customer";
 $route['customer/delete']="CustomerController/delete";
 $route['customer/editprofile']="CustomerController/editprofile";
 $route['customer/resetpassword']="CustomerController/resetpassword";
+$route['customer/feedback']="CustomerController/feedback";
+$route['customer/add_feedback']="CustomerController/add_feedback";
 /*Customer Routes*/
 
 /*Customer Group Routes*/
