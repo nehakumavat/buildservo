@@ -128,14 +128,18 @@ class HomeController extends CI_Controller {
     }
 
     public function services() {
+        $data['service_list']=$this->service_model->get_service();
         $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/services');
+        $this->load->view('frontend/services',$data);
         $this->load->view('frontend/includes/footer');
     }
 
     public function service_details() {
+        $get=$this->input->get();
+        $data['service_detail']=$this->service_model->get_service_by_id($get['id']);
+        $data['service_list']=$this->service_model->get_service();
         $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/service-details');
+        $this->load->view('frontend/service-details',$data);
         $this->load->view('frontend/includes/footer');
     }
 
