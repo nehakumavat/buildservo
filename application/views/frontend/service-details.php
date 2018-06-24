@@ -30,11 +30,11 @@
                             <img alt="" class="img-responsive" src="<?php echo base_url(); ?>assets/images/service/<?= $service_detail['service_image']?>">
                         </span>
                     </div>
-                    <div>
+<!--                    <div>
                         <span class="img-thumbnail">
                             <img alt="" class="img-responsive" src="<?php echo base_url(); ?>assets/images/service/<?= $service_detail['service_image']?>">
                         </span>
-                    </div>
+                    </div>-->
                 </div>
 
             </div>
@@ -52,22 +52,21 @@
                 <div class="row">
                     <ul class="portfolio-list">
                         <?php 
+                            $i=1;
                             if(!empty($service_list)){ 
-                                if(in_array($service_detail['id'],$service_list)){
-                                    echo 'in';die;
-                                }
                                 foreach($service_list as $service){
-                                    if($service['id']!=$service_detail['id']){
+                                    if($service['id']!=$service_detail['id'] && $i<=4){
+                                        
                         ?>
                                     <li class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="portfolio-item">
-                                            <a href="portfolio-single-small-slider.html">
+                                            <a href="<?php echo base_url(); ?>service-details?id=<?= $service['id'];?>">
                                                 <span class="thumb-info thumb-info-lighten">
                                                     <span class="thumb-info-wrapper">
-                                                        <img src="<?php echo base_url(); ?>assets/frontend/img/projects/project.jpg" class="img-responsive" alt="">
+                                                        <img src="<?php echo base_url(); ?>assets/images/service/<?= $service['service_image']?>" class="img-responsive" alt="<?= $service['name']?>" style="height:209px" >
                                                         <span class="thumb-info-title">
-                                                            <span class="thumb-info-inner">Presentation</span>
-                                                            <span class="thumb-info-type">Brand</span>
+                                                            <span class="thumb-info-inner"><?= $service['name']?></span>
+<!--                                                            <span class="thumb-info-type">Brand</span>-->
                                                         </span>
                                                         <span class="thumb-info-action">
                                                             <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
@@ -77,7 +76,7 @@
                                             </a>
                                         </div>
                                     </li>
-                        <?php } } } ?>
+                        <?php $i++; } } } ?>
 <!--                        <li class="col-md-3 col-sm-6 col-xs-12">
                             <div class="portfolio-item">
                                 <a href="portfolio-single-small-slider.html">

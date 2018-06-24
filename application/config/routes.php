@@ -78,6 +78,12 @@ $route['admin/contact_us']="AdminController/contact_us";
 $route['admin/contact_delete']="AdminController/contact_delete";
 $route['admin/feedback']="AdminController/feedback";
 
+/*Package Routes*/
+$route['package']="PackageController/index";
+$route['package/add']="PackageController/add";
+$route['package/edit']="PackageController/edit";
+$route['package/delete']="PackageController/delete";
+
 /*Employee Routes*/
 $route['employee']="EmployeeController/index";
 $route['employee/add']="EmployeeController/add";

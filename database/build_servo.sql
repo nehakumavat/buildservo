@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 19, 2018 at 04:23 PM
+-- Generation Time: Jun 24, 2018 at 11:27 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.2.1-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -209,6 +209,31 @@ CREATE TABLE `tbl_list_area` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_package`
+--
+
+CREATE TABLE `tbl_package` (
+  `package_id` int(11) NOT NULL,
+  `package_name` varchar(255) NOT NULL,
+  `cost` int(11) NOT NULL,
+  `service_id` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_package`
+--
+
+INSERT INTO `tbl_package` (`package_id`, `package_name`, `cost`, `service_id`, `created_at`, `updated_at`) VALUES
+(2, 'Enterprise', 10000, '1,3,4,5,6,7', '2018-06-24 00:29:47', '2018-06-24 00:31:18'),
+(4, 'Professional', 7000, '1,3,4,5', '2018-06-24 00:39:00', '2018-06-24 00:40:10'),
+(5, 'Standard', 5000, '1,3,4', '2018-06-24 00:39:30', '2018-06-24 00:39:30'),
+(6, 'Basic', 3000, '1,3', '2018-06-24 00:40:46', '2018-06-24 00:40:46');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_selected_services`
 --
 
@@ -335,6 +360,12 @@ ALTER TABLE `tbl_list_area`
   ADD PRIMARY KEY (`area_id`);
 
 --
+-- Indexes for table `tbl_package`
+--
+ALTER TABLE `tbl_package`
+  ADD PRIMARY KEY (`package_id`);
+
+--
 -- Indexes for table `tbl_selected_services`
 --
 ALTER TABLE `tbl_selected_services`
@@ -396,6 +427,11 @@ ALTER TABLE `tbl_feedback`
 --
 ALTER TABLE `tbl_list_area`
   MODIFY `area_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_package`
+--
+ALTER TABLE `tbl_package`
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_selected_services`
 --

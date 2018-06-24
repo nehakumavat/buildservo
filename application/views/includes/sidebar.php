@@ -56,6 +56,9 @@
                             <a href="<?php echo base_url();?>admin/customers_selected_services"><h3><i class="fa fa-cube"></i> <span class="nav-label">Customers Selected Service</span></h3></a>
                         </li>
                         <li>
+                            <a href="<?php echo base_url();?>package"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Package</span></h3></a>
+                        </li>
+                        <li>
                             <a href="<?php echo base_url();?>admin/feedback"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Customer Feedback</span></h3></a>
                         </li>
                         <li>

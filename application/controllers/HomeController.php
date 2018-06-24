@@ -11,6 +11,7 @@ class HomeController extends CI_Controller {
         $this->load->model('designation_model');
         $this->load->model('login_model');
         $this->load->model('service_model');
+        $this->load->model('package_model');
         $this->load->model('admin_model');
     }
 
@@ -144,8 +145,9 @@ class HomeController extends CI_Controller {
     }
 
     public function pricing() {
+        $data['package_list']=$this->package_model->get_package();
         $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/pricing');
+        $this->load->view('frontend/pricing',$data);
         $this->load->view('frontend/includes/footer');
     }
 
