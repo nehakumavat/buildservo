@@ -90,6 +90,12 @@ $route['employee/add']="EmployeeController/add";
 $route['employee/edit']="EmployeeController/edit";
 $route['employee/delete']="EmployeeController/delete";
 
+/*Blog Routes*/
+$route['blog']="BlogController/index";
+$route['blog/add']="BlogController/add";
+$route['blog/edit']="BlogController/edit";
+$route['blog/delete']="BlogController/delete";
+
 /*Designation Routes*/
 $route['designation']="DesignationController/index";
 $route['designation/add']="DesignationController/add";
