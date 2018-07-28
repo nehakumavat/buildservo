@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>TRENDZ | Admin Panel</title>
+    <title>Build Servo | Admin Panel</title>
 
     <link href="<?php echo base_url();?>assets/backend/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/backend/font-awesome/css/font-awesome.css" rel="stylesheet">

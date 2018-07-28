@@ -18,12 +18,24 @@ class DashboardController extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+        public function __construct() {
+            parent::__construct();
+            $this->load->model('customer_model');
+            $this->load->model('admin_model');
+            $this->load->model('employee_model');
+            $this->load->model('service_model');
+        }
+        
 	public function dashboard()
 	{
             if(!$this->session->userdata('logged_in')){
                 $this->session->set_flashdata('access_denied', 'Session Expired...Please Login...');
                 redirect('LoginController/index', 'refresh');
             }else{
+                $data['service']=$this->service_model->get_service();
+                $data['selected_service']=$this->service_model->get_selected_service();
+                $data['customers']=$this->customer_model->get_customer();
+                $data['feedbacks']=$this->admin_model->get_feedback();
                 $data['user_details']=$this->session->userdata();
                 $this->load->view('includes/header');
                 $this->load->view('includes/sidebar');

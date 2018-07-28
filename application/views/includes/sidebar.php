@@ -43,9 +43,9 @@
                         <li>
                             <a href="<?php echo base_url();?>employee"><h3><i class="fa fa-users"></i> <span class="nav-label">Employee</span></h3></a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="<?php echo base_url();?>designation"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Designation</span></h3></a>
-                        </li>
+                        </li>-->
                         <li>
                             <a href="<?php echo base_url();?>customer"><h3><i class="fa fa-users"></i> <span class="nav-label">Customers</span></h3></a>
                         </li>

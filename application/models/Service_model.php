@@ -63,6 +63,11 @@ class Service_model extends CI_Model {
         $query=$this->db->get();
         return $query->result_array();
     }
+    function get_selected_service_by_ids($id) {
+        $this->db->where('id',$id);
+        $query=$this->db->get('tbl_selected_services');
+        return $query->row_array();
+    }
     function get_selected_service_by_id($id) {
         $this->db->select('tbl_selected_services.*,tbl_customer_profile.*,tbl_service.name');
         $this->db->from('tbl_selected_services');

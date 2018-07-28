@@ -63,6 +63,12 @@ class Admin_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function get_feedback_by_id($id){
+        $this->db->where('feedback_id',$id);
+        $query = $this->db->get('tbl_feedback');
+        return $query->row_array();
+    }
+
     public function get_feedback_customer_id($customer_id) {
         $this->db->select('f.*,e.*');
         $this->db->from('tbl_feedback f');

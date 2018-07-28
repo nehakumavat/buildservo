@@ -68,15 +68,15 @@
                                 <select class="form-control" name="designation_id">
                                     <option disabled="disabled" selected="selected">Select Designation</option>
                                     <?php
-                                        if (!empty($designation)) {
-                                            foreach ($designation as $key => $value) {
+                                        if (!empty($service)) {
+                                            foreach ($service as $key => $value) {
                                                 if($employee_detail['designation_id']==$value['id']){
                                                     $selected='selected="selected"';
                                                 }else{
                                                     $selected='';
                                                 }
                                     ?>  
-                                                <option value="<?= $value['id']?>" <?= $selected?>><?= $value['designation_name'] ?></option>
+                                                <option value="<?= $value['id']?>" <?= $selected?>><?= $value['name'] ?></option>
                                     <?php
                                             }
                                         }
