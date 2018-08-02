@@ -13,6 +13,7 @@ class HomeController extends CI_Controller {
         $this->load->model('service_model');
         $this->load->model('package_model');
         $this->load->model('admin_model');
+        $this->load->model('blog_model');
     }
 
     public function login() {
@@ -152,15 +153,22 @@ class HomeController extends CI_Controller {
     }
 
     public function blogs() {
+        $data['blog_details']= $this->blog_model->get_blog();
         $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/blogs');
+        $this->load->view('frontend/blogs',$data);
         $this->load->view('frontend/includes/footer');
     }
 
     public function blog_details() {
-        $this->load->view('frontend/includes/header');
-        $this->load->view('frontend/blog-details');
-        $this->load->view('frontend/includes/footer');
+        $get=$this->input->get();
+        if(!empty($get)){
+            $data['blog_detail']=$this->blog_model->get_blog_by_id($get['id']);
+            $this->load->view('frontend/includes/header');
+            $this->load->view('frontend/blog-details',$data);
+            $this->load->view('frontend/includes/footer');
+        }else{
+            redirect('blogs');
+        }
     }
 
     public function contact_us() {

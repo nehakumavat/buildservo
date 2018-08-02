@@ -1,5 +1,5 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
+    <div class="col-lg-9">
         <h2>Employee</h2>
         <ol class="breadcrumb">
             <li>
@@ -13,7 +13,7 @@
             </li>
         </ol>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-3">
 <!--        <a href="javascript:void(0);" data-toggle="modal" data-target="#add-customer"   class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-plus mr-2"></i> Add New Customer</a>-->
         <a href="<?= base_url()?>employee/add" class="btn btn-success" style="margin-bottom: -80px;margin-left: 11px;"><i class="fa fa-plus mr-2"></i> Add New Employee</a>
     </div>
@@ -68,8 +68,8 @@
                                             <td class="center"><?= $value['address']; ?></td>
                                             <td class="center">
                                                 <?php  
-                                                    $designation=$this->designation_model->get_designation_by_id($value['designation_id']);
-                                                    echo $designation['designation_name'];
+                                                    $service=$this->service_model->get_service_by_id($value['designation_id']);
+                                                    echo $service['name'];
                                                 ?>
                                             </td>
                                             <td class="center"><?= $value['created_at']; ?></td>

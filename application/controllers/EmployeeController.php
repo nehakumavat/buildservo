@@ -24,6 +24,7 @@ class EmployeeController extends CI_Controller {
         $this->load->model('customer_model');
         $this->load->model('employee_model');
         $this->load->model('designation_model');
+        $this->load->model('service_model');
         
     }
     
@@ -77,6 +78,7 @@ class EmployeeController extends CI_Controller {
                     } else {
                         $this->session->set_flashdata('add_failed', 'Failed to add employee');
                         $data['designation']=$this->designation_model->get_designation();
+                        $data['service']=$this->service_model->get_service();
                         $data['title']='Add';
                         $this->load->view('includes/header');
                         $this->load->view('includes/sidebar');
@@ -85,6 +87,7 @@ class EmployeeController extends CI_Controller {
                     }
                 }else{
                     $data['designation']=$this->designation_model->get_designation();
+                    $data['service']=$this->service_model->get_service();
                     $data['title']='Add';
                     $this->load->view('includes/header');
                     $this->load->view('includes/sidebar');
@@ -93,6 +96,7 @@ class EmployeeController extends CI_Controller {
                 }
             }else{
                 $data['designation']=$this->designation_model->get_designation();
+                $data['service']=$this->service_model->get_service();
                 $data['title']='Add';
                 $this->load->view('includes/header');
                 $this->load->view('includes/sidebar');
@@ -143,6 +147,7 @@ class EmployeeController extends CI_Controller {
                     } else {
                         $this->session->set_flashdata('add_failed', 'Failed to update employee');
                         $data['employee_detail']=$this->employee_model->get_employee_by_id($details['id']);
+                        $data['service']=$this->service_model->get_service();
                         $data['title']='Edit';
                         $data['designation']=$this->designation_model->get_designation();
                         $this->load->view('includes/header');
@@ -152,6 +157,7 @@ class EmployeeController extends CI_Controller {
                     }
                 }else{
                     $data['employee_detail']=$this->employee_model->get_employee_by_id($post['id']);
+                    $data['service']=$this->service_model->get_service();
                     $data['title']='Edit';
                     $data['designation']=$this->designation_model->get_designation();
                     $this->load->view('includes/header');
@@ -161,6 +167,7 @@ class EmployeeController extends CI_Controller {
                 }
             }else{
                 $data['employee_detail']=$this->employee_model->get_employee_by_id($get['id']);
+                $data['service']=$this->service_model->get_service();
                 $data['title']='Edit';
                 $data['designation']=$this->designation_model->get_designation();
                 $this->load->view('includes/header');

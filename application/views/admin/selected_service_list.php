@@ -1,3 +1,4 @@
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-9">
         <h2>Selected Service</h2>
@@ -22,6 +23,68 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                            <thead>
+                                <tr>
+                                    <th class="">Id</th>
+                                    <th>Service</th>
+                                    <th>Customer name</th>
+                                    <th>Booking Date</th>
+                                    <th>Booking Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                if (!empty($selected_service_list)) {
+                                    foreach ($selected_service_list as $key => $value) {
+                                        ?>
+                                        <tr class="gradeX" id="employee-<?= $value['id'] ?>">
+                                            <td class=""><?= $value['id']; ?></td>
+                                            <td>
+                                                <a href="<?= base_url()?>service/selected_services_view?id=<?= $value['id'] ?>">
+                                                    <?= $value['name'];?>
+                                                </a>
+                                            </td>
+                                            <td><?= $value['customer_name']; ?></td>
+                                            <td><?php 
+                                                    $date=date_create($value['booking_date']);
+                                                    echo date_format($date,"d/m/Y");
+                                                ?>
+                                            </td>
+                                            <td class="center">
+                                                <?php 
+                                                    if($value['service_status']==1){
+                                                        echo "Pending";
+                                                    }else if($value['service_status']==2){
+                                                        echo "Confirmed";
+                                                    }else if($value['service_status']==3){
+                                                        echo "Cancelled";
+                                                    }else if($value['service_status']==4){
+                                                        echo "In progress";
+                                                    }else{
+                                                        echo "Completed";
+                                                    } 
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?= base_url()?>admin/customer_selected_services_view?id=<?= $value['id'] ?>"  class="btn btn-primary" name="book_service">View Details</a>
+                                                <?php if($value['service_status']!=3){ ?>
+                                                    <a href="javascript:void(0)" data-id="<?= $value['id'] ?>" class="btn btn-danger" name="selected_service_cancle" id="selected_service_cancle">Cancle Booking</a>
+                                                <?php } ?>  
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                            ?>
+                            </tbody>            
+                        </table>
+                    </div>
+
+                </div>
+<!--                <div class="ibox-content">
                     <div class="container">
                         <div class="col-md-9">
                             <h2>List of Customer Selected Services</h2>
@@ -87,7 +150,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -114,6 +177,7 @@
         $("#id_modal").val(id);
         $('#deleteConfirmationModal').modal('show');
     });
+    
     $("#confirm_btn").on('click',function(){
         var id=$("#id_modal").val();
         $.ajax({

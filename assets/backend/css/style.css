@@ -160,7 +160,7 @@ h5 {
   font-size: 12px;
 }
 .nav-header {
-  padding: 33px 25px;
+  padding: 15px 25px;
   background: url("patterns/header-profile.png") no-repeat;
 }
 .pace-done .nav-header {
@@ -4444,7 +4444,7 @@ body.mini-navbar.fixed-sidebar .logo-element {
   padding-top: 110px;
 }
 .loginscreen.middle-box {
-  width: 300px;
+  width: 500px;
 }
 .loginColumns {
   max-width: 800px;
@@ -4458,13 +4458,14 @@ body.mini-navbar.fixed-sidebar .logo-element {
 }
 .logo-name {
   color: #e6e6e6;
-  font-size: 180px;
+  font-size: 120px;
   font-weight: 800;
   letter-spacing: -10px;
   margin-bottom: 0;
+  text-transform: uppercase;
 }
 .middle-box h1 {
-  font-size: 170px;
+  font-size: 120px;
 }
 .wrapper .middle-box {
   margin-top: 140px;
@@ -8278,3 +8279,60 @@ label.star:before {
 }
 
 /********End Star rating css***********/
+.bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    // background-color: #f39c12 !important;
+}
+.small-box > .inner {
+    padding: 10px;
+}
+.small-box .icon {
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    position: absolute;
+    top: -3px;
+    right: 26px !important;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0,0,0,0.15);
+}
+.small-box > .small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+.small-box h3, .small-box p {
+    z-index: 5;
+}
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+.small-box h3, .small-box p {
+    z-index: 5;
+}
+.small-box p {
+    font-size: 15px;
+}
+.ion, .ion-person-add{
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

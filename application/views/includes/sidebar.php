@@ -41,11 +41,11 @@
                     </li>
                     <?php if($this->session->userdata('logged_in') && $this->session->userdata('type')==1){ ?>
                         <li>
-                            <a href="<?php echo base_url();?>employee"><h3><i class="fa fa-users"></i> <span class="nav-label">Employee</span></h3></a>
+                            <a href="<?php echo base_url();?>employee"><h3><i class="fa fa-user"></i> <span class="nav-label">Employee</span></h3></a>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="<?php echo base_url();?>designation"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Designation</span></h3></a>
-                        </li>
+                        </li>-->
                         <li>
                             <a href="<?php echo base_url();?>customer"><h3><i class="fa fa-users"></i> <span class="nav-label">Customers</span></h3></a>
                         </li>
@@ -53,38 +53,38 @@
                             <a href="<?php echo base_url();?>service"><h3><i class="fa fa-cube"></i> <span class="nav-label">Service</span></h3></a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url();?>admin/customers_selected_services"><h3><i class="fa fa-cube"></i> <span class="nav-label">Customers Selected Service</span></h3></a>
+                            <a href="<?php echo base_url();?>admin/customers_selected_services"><h3><i class="fa fa-cubes"></i> <span class="nav-label">Customers Selected Service</span></h3></a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url();?>package"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Package</span></h3></a>
+                            <a href="<?php echo base_url();?>package"><h3><i class="fa fa-money"></i> <span class="nav-label">Package</span></h3></a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url();?>blog"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Blogs</span></h3></a>
+                            <a href="<?php echo base_url();?>blog"><h3><i class="fa fa-rss-square"></i> <span class="nav-label">Blogs</span></h3></a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url();?>admin/feedback"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Customer Feedback</span></h3></a>
+                            <a href="<?php echo base_url();?>admin/feedback"><h3><i class="fa fa-comments-o"></i> <span class="nav-label">Customer Feedback</span></h3></a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url();?>admin/contact_us"><h3><i class="fa fa-cube"></i> <span class="nav-label">Contact us</span></h3></a>
+                            <a href="<?php echo base_url();?>admin/contact_us"><h3><i class="fa fa-mobile-phone"></i> <span class="nav-label">Contact us</span></h3></a>
                         </li>
                     <?php }else{ ?>
                             <li>
-                                <a href="<?php echo base_url();?>service/service_booking"><h3><i class="fa fa-users"></i> <span class="nav-label">Service Booking</span></h3></a>
+                                <a href="<?php echo base_url();?>service/service_booking"><h3><i class="fa fa-bookmark-o"></i> <span class="nav-label">Service Booking</span></h3></a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url();?>service/selected_services"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Seleted Services</span></h3></a>
+                                <a href="<?php echo base_url();?>service/selected_services"><h3><i class="fa fa-cubes"></i> <span class="nav-label">Seleted Services</span></h3></a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url();?>customer/feedback"><h3><i class="fa fa-sitemap"></i> <span class="nav-label">Feedback</span></h3></a>
+                                <a href="<?php echo base_url();?>customer/feedback"><h3><i class="fa fa-comments-o"></i> <span class="nav-label">Feedback</span></h3></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)"><h3><i class="fa fa-th-large"></i> <span class="nav-label">Profile</span> <span class="fa arrow"></span></h3></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="<?php echo base_url();?>customer/editprofile"><h3><i class="fa fa-cube"></i> <span class="nav-label">Edit Profile</span></h3></a>
+                                        <a href="<?php echo base_url();?>customer/editprofile"><h3><i class="fa fa-user-plus"></i> <span class="nav-label">Edit Profile</span></h3></a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url();?>customer/resetpassword"><h3><i class="fa fa-cubes"></i> <span class="nav-label">Reset Password</span></h3></a>
+                                        <a href="<?php echo base_url();?>customer/resetpassword"><h3><i class="fa fa-key"></i> <span class="nav-label">Reset Password</span></h3></a>
                                     </li>
 
                                 </ul>
